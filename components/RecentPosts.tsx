@@ -1,28 +1,29 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const POSTS = [
   {
     id: 1,
     category: 'Publication',
     date: 'Oct 24, 2024',
-    title: 'Machine learning approaches for protein folding prediction',
-    link: '#'
+    title: 'Machine learning approaches for protein folding prediction published in Nature CS',
+    link: '/news'
   },
   {
     id: 2,
-    category: 'News',
+    category: 'Award',
     date: 'Sep 12, 2024',
-    title: 'Dr. Smith awarded the National Science Grant',
-    link: '#'
+    title: 'Dr. Smith awarded the National Science Grant to study membrane proteins',
+    link: '/news'
   },
   {
     id: 3,
-    category: 'Event',
+    category: 'Conference',
     date: 'Aug 05, 2024',
-    title: 'International Conference on Computational Biology 2024',
-    link: '#'
+    title: 'CC Lab presents three posters at the International Conference on Computational Biology',
+    link: '/news'
   }
 ];
 
@@ -59,32 +60,32 @@ export const RecentPosts: React.FC = () => {
         <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
           Latest Updates
         </h3>
-        <a href="#" className="text-xs font-bold uppercase tracking-widest text-primary hover:text-slate-900 dark:hover:text-white transition-colors">
+        <Link to="/news" className="text-xs font-bold uppercase tracking-widest text-primary hover:text-slate-900 dark:hover:text-white transition-colors">
           View Archive
-        </a>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {POSTS.map((post) => (
-          <motion.a
+          <motion.div
             key={post.id}
-            href={post.link}
-            className="group block"
             variants={itemVariants}
           >
-            <div className="mb-3 flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-1 bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-slate-300 rounded-sm">
-                {post.category}
-              </span>
-              <span className="text-[10px] font-mono text-gray-400">
-                {post.date}
-              </span>
-            </div>
-            <h4 className="text-lg font-medium text-slate-900 dark:text-white leading-snug group-hover:text-primary transition-colors pr-6 relative">
-              {post.title}
-              <ArrowUpRight className="absolute top-0.5 right-0 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
-            </h4>
-          </motion.a>
+            <Link to={post.link} className="group block">
+              <div className="mb-3 flex items-center justify-between">
+                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-1 bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-slate-300 rounded-sm">
+                  {post.category}
+                </span>
+                <span className="text-[10px] font-mono text-gray-400">
+                  {post.date}
+                </span>
+              </div>
+              <h4 className="text-lg font-medium text-slate-900 dark:text-white leading-snug group-hover:text-primary transition-colors pr-6 relative">
+                {post.title}
+                <ArrowUpRight className="absolute top-0.5 right-0 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+              </h4>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </motion.div>

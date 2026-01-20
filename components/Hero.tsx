@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Network } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -34,7 +35,7 @@ const imageVariants: Variants = {
 export const Hero: React.FC = () => {
   return (
     <motion.div
-      className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-12 items-center h-full w-full"
+      className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-12 items-center w-full min-h-[600px]"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -67,13 +68,13 @@ export const Hero: React.FC = () => {
             className="flex items-start md:justify-start pt-1"
             variants={itemVariants}
           >
-            <a
-              href="#"
+            <Link
+              to="/publication"
               className="group flex items-center gap-3 text-primary font-bold text-lg tracking-tight hover:text-[#003366] transition-all"
             >
               Explore Research
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-2" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

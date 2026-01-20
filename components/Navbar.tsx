@@ -1,41 +1,48 @@
 import React, { useState } from 'react';
 import { Microscope, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { name: 'Member', href: '#' },
-  { name: 'Publication', href: '#' },
-  { name: 'Resources', href: '#' },
-  { name: 'News', href: '#' },
-  { name: 'Team', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Member', href: '/member' },
+  { name: 'Publication', href: '/publication' },
+  { name: 'Resources', href: '/resources' },
+  { name: 'News', href: '/news' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="w-full border-b border-gray-100 dark:border-gray-800 sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 h-20 flex items-center justify-between">
         {/* Logo Area */}
-        <div className="flex items-center gap-3 select-none cursor-pointer group">
+        <Link to="/" className="flex items-center gap-3 select-none cursor-pointer group">
           <Microscope className="text-primary w-8 h-8 group-hover:scale-110 transition-transform duration-300" strokeWidth={2.5} />
           <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight uppercase leading-none">
             CC Lab
           </h2>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 lg:gap-10">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-slate-900 dark:text-white hover:text-primary transition-colors duration-200 relative group"
+              to={link.href}
+              className={`text-sm font-medium transition-colors duration-200 relative group ${
+                isActive(link.href) ? 'text-primary' : 'text-slate-900 dark:text-white hover:text-primary'
+              }`}
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
+            </Link>
           ))}
         </nav>
 
@@ -70,14 +77,16 @@ export const Navbar: React.FC = () => {
             </div>
             <nav className="flex flex-col gap-6 items-center justify-center flex-grow">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  className="text-2xl font-medium text-slate-900 dark:text-white hover:text-primary"
+                  to={link.href}
+                  className={`text-2xl font-medium ${
+                    isActive(link.href) ? 'text-primary' : 'text-slate-900 dark:text-white hover:text-primary'
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </motion.div>
