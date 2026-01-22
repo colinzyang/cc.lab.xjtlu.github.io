@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { PI, MEMBERS, ALUMNI } from '../src/data/members';
 import { Mail, Github, Linkedin, GraduationCap } from 'lucide-react';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
+import { loadMembers, Member as MemberType } from '../src/lib/dataLoader';
 
 export const Member: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  const [pi, setPi] = useState<MemberType | null>(null);
+  const [members, setMembers] = useState<MemberType[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setBreadcrumbs([{ label: 'People' }]);
   }, [setBreadcrumbs]);
+
+  useEffect(() => {
+    loadMembers().then(data => {
+      setPi(data.PI);
+      setMembers(data.MEMBERS);
+      setLoading(false);
+    }).catch(error => {
+      console.error('Error loading members:', error);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading || !pi) {
+    return (
+      <div className="w-full max-w-7xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Members</h1>
+        <p className="text-slate-600 dark:text-gray-300">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -26,48 +49,48 @@ export const Member: React.FC = () => {
       </motion.div>
 
       {/* PI Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
         className="mb-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
       >
          <div className="md:col-span-5 aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-800">
-            <img 
-              src={PI.image} 
-              alt={PI.name}
+            <img
+              src={pi.image}
+              alt={pi.name}
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
          </div>
          <div className="md:col-span-7 flex flex-col justify-center h-full pt-4">
-            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-2">{PI.role}</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">{PI.name}</h2>
+            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-2">{pi.role}</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">{pi.name}</h2>
             <p className="text-lg text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">
-              {PI.bio_long}
+              {pi.bio_long}
             </p>
-            {PI.interest && (
+            {pi.interest && (
               <div className="text-sm font-semibold text-slate-500 dark:text-gray-400 mb-4">
-                Focus: {PI.interest}
+                Focus: {pi.interest}
               </div>
             )}
             <div className="flex gap-4 items-center">
-              {PI.email && (
-                <a href={`mailto:${PI.email}`} className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
+              {pi.email && (
+                <a href={`mailto:${pi.email}`} className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
                   <Mail className="w-5 h-5" />
                 </a>
               )}
-              {PI.github && (
-                <a href={`https://github.com/${PI.github}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
+              {pi.github && (
+                <a href={`https://github.com/${pi.github}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
                   <Github className="w-5 h-5" />
                 </a>
               )}
-              {PI.google_scholar && (
-                <a href={`https://scholar.google.com/citations?user=${PI.google_scholar}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
+              {pi.google_scholar && (
+                <a href={`https://scholar.google.com/citations?user=${pi.google_scholar}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
                   <GraduationCap className="w-5 h-5" />
                 </a>
               )}
-              {PI.orcid && (
-                <a href={`https://orcid.org/${PI.orcid}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors text-xs font-bold">
+              {pi.orcid && (
+                <a href={`https://orcid.org/${pi.orcid}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors text-xs font-bold">
                   ORCID
                 </a>
               )}
@@ -81,7 +104,7 @@ export const Member: React.FC = () => {
           Current Members
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-          {MEMBERS.map((member, idx) => (
+          {members.map((member, idx) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 20 }}

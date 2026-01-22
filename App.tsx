@@ -10,6 +10,7 @@ import { Publication } from './components/Publication';
 import { Resources } from './components/Resources';
 import { News } from './components/News';
 import { Contact } from './components/Contact';
+import { preloadAllData } from './src/lib/dataLoader';
 
 // ScrollToTop component to reset scroll position on route change
 const ScrollToTop = () => {
@@ -50,6 +51,10 @@ const MainContent = () => {
 };
 
 const App: React.FC = () => {
+  React.useEffect(() => {
+    preloadAllData();
+  }, []);
+
   return (
     <Router>
       <BreadcrumbProvider>

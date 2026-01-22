@@ -4,28 +4,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-CC Lab is a research lab website for Structural Bioinformatics & Molecular Dynamics built with React, TypeScript, and Vite. It's hosted on GitHub Pages and uses hash-based routing (HashRouter) to work without a backend server.
+CC Lab is a research lab website for Structural Bioinformatics & Molecular Dynamics built with React, TypeScript, and Vite. It's hosted on GitHub Pages and uses hash-based routing (HashRouter) to work without a backend server. Content is managed through Decap CMS, allowing non-technical users to edit data without modifying code.
 
 ## Commands
 
 ### Development
-- `npm run dev` - Start development server (Vite dev server)
+- `npm run dev` - Start development server (Vite dev server on http://localhost:5173)
 - `npm run build` - Build for production (outputs to `dist/` directory)
 - `npm run preview` - Preview production build locally
 
-### Linting and Type Checking
-TypeScript strict mode is enabled in `tsconfig.json` with:
+### Type Checking
+TypeScript strict mode is enabled. Type checking happens automatically during development and build. The IDE will show errors in real-time. No separate type checking command is needed—the build will fail if there are type errors.
+
+TypeScript configuration (`tsconfig.json`):
 - `strict: true` - Full strict type checking
 - `noUnusedLocals: true` - Error on unused variables
 - `noUnusedParameters: true` - Error on unused parameters
 - `noFallthroughCasesInSwitch: true` - Error on missing switch cases
 
-Run type checking with your IDE or build process. No separate lint/test commands are currently configured.
-
 ## Architecture
 
+### Project Structure
+
+```
+.
+├── components/           # Page components (Member, Publication, News, Contact, etc.)
+├── src/
+│   ├── context/          # React Context (BreadcrumbContext)
+│   └── lib/
+│       └── dataLoader.ts # Data fetching & type definitions
+├── public/
+│   ├── data/             # JSON data files (managed by Decap CMS)
+│   ├── admin/            # Decap CMS configuration & interface
+│   └── assets/images/    # Team photos, paper thumbnails, etc.
+├── App.tsx               # Main app component & routing
+├── index.tsx             # React entry point
+├── index.html            # HTML template (Tailwind CDN config)
+├── vite.config.ts        # Vite configuration
+└── tsconfig.json         # TypeScript configuration
+```
+
 ### Routing
-The app uses **React Router v6 with HashRouter** (`App.tsx:2`). This is essential for GitHub Pages deployment since it's a static host.
+
+The app uses **React Router v6 with HashRouter** (`App.tsx:2`). This is essential for GitHub Pages deployment since it's a static host and doesn't support client-side routing natively.
 
 Routes defined in `App.tsx`:
 - `/` - Home (Hero + RecentPosts)
@@ -39,181 +60,193 @@ Routes defined in `App.tsx`:
 **Important:** Always use hash-based links when adding new routes. The base is set to `./` in `vite.config.ts` for relative path handling on GitHub Pages.
 
 ### Layout Structure
-The main layout is defined in `App.tsx` with:
-1. **Navbar** - Sticky header with mobile menu using Framer Motion animations
-2. **Main content area** - Centered max-width container with responsive padding
-3. **Footer** - Bottom of page
 
-All pages follow this layout structure. A `ScrollToTop` component automatically scrolls to top on route changes.
+The main layout is defined in `App.tsx`:
+1. **Navbar** (`components/Navbar.tsx`) - Sticky header with mobile menu using Framer Motion animations
+2. **Main content area** - Centered max-width container with responsive padding
+3. **Footer** (`components/Footer.tsx`) - Bottom of page
+
+All pages follow this layout structure. A `ScrollToTop` component automatically scrolls to the top when routes change.
 
 ### Styling
-- **Tailwind CSS** - Loaded via CDN in `index.html` with custom config (not PostCSS)
-- **Custom Tailwind config** in `index.html:12-30`:
-  - Primary color: `#004a99`
+
+- **Tailwind CSS** - Loaded via CDN in `index.html` (not a PostCSS pipeline)
+- **Custom Tailwind config** defined in `index.html:12-30`:
+  - Primary color: `#004a99` (used for links, highlights)
   - Background light: `#FFFFFF`
   - Background dark: `#0f1923`
-  - Font: Inter (Google Fonts)
+  - Font: Inter (from Google Fonts)
   - Custom font size: `huge` for large headings
-- **Dark mode** - Class-based dark mode support with `dark:` prefix
-- **No CSS files** - All styling via Tailwind utility classes
+- **Dark mode** - Class-based dark mode support using `dark:` prefix
+- **No CSS files** - All styling via Tailwind utility classes (no `.css` files in the repo)
+
+When adding styles, use Tailwind classes directly in JSX. To support dark mode, use `dark:` variants (e.g., `bg-white dark:bg-background-dark`).
 
 ### Component Organization
-All components are in the `components/` directory. Most are page-level components, except:
+
+All page components are in the `components/` directory. Most are full-page components (Member, Publication, News, Contact, Resources, Home). Sub-components include:
 - `Hero.tsx` - Landing section on home page
 - `RecentPosts.tsx` - Recent posts section on home page
-- `Breadcrumb.tsx` - Breadcrumb navigation component (context-driven)
+- `Breadcrumb.tsx` - Breadcrumb navigation (context-driven)
+- `Navbar.tsx` - Header with navigation and mobile menu
+- `Footer.tsx` - Footer
 
 Navigation state is derived from React Router's `useLocation()` hook in `Navbar.tsx`.
 
-### Data Management
-**Centralized data structure** in `src/data/`:
-- `types.ts` - TypeScript interfaces for all data types (Member, Publication, NewsItem, ContactInfo)
-- `members.ts` - Lab members (PI, current members, alumni)
-- `publications.ts` - Research publications grouped by year
-- `news.ts` - News and events
-- `labInfo.ts` - Lab contact information and metadata
+### Data Management with Decap CMS
 
-**Key data types:**
-- `Member` - Includes name, role, bio, social links (email, GitHub, Google Scholar, ORCID), and type (member/alumn)
-- `Publication` - Includes title, journal, authors, DOI, preprint links (arXiv/bioRxiv)
-- `NewsItem` - Date, title, category, excerpt
-- `ContactInfo` - Email, office location, map URL
+**Data source:** JSON files in `public/data/` (not a traditional database)
+- `public/data/members.json` - Lab members (PI, current members, alumni)
+- `public/data/publications.json` - Research publications grouped by year
+- `public/data/news.json` - News and events
+- `public/data/labInfo.json` - Lab contact information and metadata
 
-**Data usage pattern:**
+**Data loading:** `src/lib/dataLoader.ts` provides:
+- Type definitions for all data types (Member, Publication, NewsItem, ContactInfo, LabInfo)
+- Async loader functions: `loadMembers()`, `loadPublications()`, `loadNews()`, `loadLabInfo()`
+- Built-in caching to avoid redundant fetches
+- `preloadAllData()` called on app startup in `App.tsx`
+
+**Component pattern for data fetching:**
 ```typescript
-import { PI, MEMBERS } from '../src/data/members';
-import { PUBLICATIONS_BY_YEAR } from '../src/data/publications';
+import { useEffect, useState } from 'react';
+import { loadMembers, Member } from '../src/lib/dataLoader';
+
+export const MyComponent: React.FC = () => {
+  const [members, setMembers] = useState<Member[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadMembers().then(data => {
+      setMembers(data.MEMBERS);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  return <div>{/* render members */}</div>;
+};
 ```
 
-### Context System
-**BreadcrumbContext** (`src/context/BreadcrumbContext.tsx`):
-- Global breadcrumb state management
-- Pages set breadcrumbs via `setBreadcrumbs()` in `useEffect`
-- Home page sets empty array to hide breadcrumbs
-- Breadcrumb display is centralized in `App.tsx` (conditionally rendered when `items.length > 0`)
+**Development tip:** Data caching means hard-refreshing the browser (Cmd+Shift+R or Ctrl+Shift+R) is needed to see JSON file changes during development.
 
-**Usage in pages:**
+### Context System
+
+**BreadcrumbContext** (`src/context/BreadcrumbContext.tsx`):
+- Manages global breadcrumb state for page navigation
+- Pages set breadcrumbs via `setBreadcrumbs()` in a `useEffect` hook
+- Home page sets empty array to hide breadcrumbs
+- Breadcrumb display is in `App.tsx` (conditionally rendered when `items.length > 0`)
+
+**Usage pattern:**
 ```typescript
 const { setBreadcrumbs } = useBreadcrumb();
-React.useEffect(() => {
+useEffect(() => {
   setBreadcrumbs([{ label: 'Page Name' }]);
 }, [setBreadcrumbs]);
 ```
 
-### Data
-- `metadata.json` - Site name and description
-- All content data centralized in `src/data/` directory
-- No database or API integration
-- Type-safe data management with TypeScript interfaces
-
 ### Dependencies
+
+Core libraries:
 - `react` & `react-dom` - UI framework
-- `react-router-dom` - Client-side routing
-- `framer-motion` - Animation library (used in Navbar mobile menu)
-- `lucide-react` - Icon library (Microscope icon in navbar)
+- `react-router-dom` - Client-side routing with HashRouter
+- `framer-motion` - Animation library (used for Navbar mobile menu and component transitions)
+- `lucide-react` - Icon library (used throughout for UI icons)
 - `typescript` - Type safety
 - `vite` - Build tool and dev server
 - `@vitejs/plugin-react` - React support in Vite
 
-## GitHub Pages Deployment
-The site is deployed to GitHub Pages with the following configuration:
-- Base URL: `./` (relative paths) - configured in `vite.config.ts:7`
-- Build output: `dist/` directory - configured in `vite.config.ts:8-11`
-- Routing: HashRouter ensures client-side routing works on static host
-- No sourcemaps in production (`sourcemap: false`)
+No additional runtime dependencies for state management, HTTP, or CSS-in-JS. This keeps the bundle small.
 
-To deploy, the `dist/` folder is pushed to the repo. See the build command above.
+## GitHub Pages Deployment
+
+The site is deployed to GitHub Pages with the following configuration:
+- **Base URL:** `./` (relative paths) - configured in `vite.config.ts:7`
+- **Build output:** `dist/` directory - configured in `vite.config.ts:8-11`
+- **Routing:** HashRouter ensures client-side routing works on static hosts
+- **No sourcemaps:** `sourcemap: false` in production for smaller bundle size
+
+To deploy: commit the built `dist/` folder and push. The deploy process depends on your GitHub Pages setup (e.g., automatic builds with GitHub Actions or manual builds).
+
+## Content Management System (Decap CMS)
+
+Decap CMS provides a visual interface for managing site content without writing code.
+
+### Accessing the CMS
+
+**Development (Local Testing):**
+```bash
+npm run dev
+# Open: http://localhost:5173/admin/
+# Decap will use the local "test-repo" backend (edit config.yml to enable)
+```
+
+**Production (Live Site):**
+- Access: `https://your-domain.com/admin/`
+- Requires GitHub authentication (via Netlify Identity if deployed on Netlify)
+- All changes are auto-committed to the repository
+
+### CMS Configuration
+
+- **Config file:** `public/admin/config.yml` - Defines backend, collections, and fields
+- **Interface:** `public/admin/index.html` - Loads Decap CMS from CDN and Netlify Identity widget
+
+### CMS Collections
+
+1. **Members** - Add/edit team members (PI, current members, alumni)
+2. **Publications** - Manage research papers grouped by year
+3. **News** - Create news and event entries
+4. **Lab Info** - Update contact information and lab description
+
+### Manual Data Editing
+
+If you prefer to bypass the CMS:
+- Edit JSON files in `public/data/` directly
+- Data loading is automatic; no need to restart the dev server
+- Changes are fetched dynamically by components
 
 ## Key Development Notes
 
 1. **TypeScript is strict** - All files use strict type checking. Ensure proper typing for new components.
-2. **Dark mode is integrated** - Use `dark:` Tailwind classes for dark mode support. Test both themes.
-3. **Mobile responsive** - Navbar has mobile menu. Test at breakpoints (md: 768px).
-4. **Animations** - Framer Motion is used for Navbar mobile menu and component transitions. Refer to `Navbar.tsx:63-67` for spring animation patterns.
+2. **Dark mode is integrated** - Use `dark:` Tailwind classes for dark mode support. Always test both light and dark themes.
+3. **Mobile responsive** - The Navbar has a mobile menu. Test at breakpoints (md: 768px, etc.).
+4. **Animations** - Framer Motion is used for Navbar mobile menu and page transitions. See `Navbar.tsx:63-67` for spring animation patterns.
 5. **Icons** - lucide-react icons are available. See `Navbar.tsx:25` for usage example.
-6. **Context for breadcrumbs** - All page-level components use `useBreadcrumb()` to set breadcrumbs. Home page sets empty array to hide breadcrumbs.
-7. **Centralized data** - All content (members, publications, news, contact info) lives in `src/data/`. Update data there, not in components.
-
-## Common Data Updates
-
-### Adding a New Team Member
-Edit `src/data/members.ts` and add to `MEMBERS` array:
-```typescript
-{
-  id: 'firstname_lastname',
-  name: 'Full Name, PhD',
-  role: 'Position Title',
-  title: 'Full Position Title',
-  image: '/assets/images/people/bio-lastname.jpg',
-  bio_long: 'Full biography...',
-  interest: 'Research interests',
-  email: 'email@xjtlu.edu.cn',
-  type: 'member'
-}
-```
-
-### Adding a New Publication
-Edit `src/data/publications.ts` and add to appropriate year's papers array:
-```typescript
-{
-  id: 6,
-  title: 'Paper Title',
-  journal: 'Journal Name',
-  date: '2024 Feb',
-  year: 2024,
-  authors: 'Author List',
-  link: 'https://doi.org/...',
-  doi: '10.xxxx/xxxxx',
-  preprint_url: 'https://arxiv.org/...',  // optional
-  preprint_label: 'arXiv'  // optional
-}
-```
-
-### Adding News/Events
-Edit `src/data/news.ts` and add to `NEWS_ITEMS` array:
-```typescript
-{
-  date: 'Month Year',
-  title: 'News Title',
-  category: 'Category',
-  excerpt: 'Brief description'
-}
-```
-
-### Updating Contact Information
-Edit `src/data/labInfo.ts` and modify `CONTACT` object:
-```typescript
-export const CONTACT: ContactInfo = {
-  email: 'email@xjtlu.edu.cn',
-  office: 'Office location',
-  mapUrl: 'https://maps.app.goo.gl/...'
-};
-```
+6. **Context for breadcrumbs** - All page-level components should use `useBreadcrumb()` to set breadcrumbs on mount. Home page sets empty array to hide breadcrumbs.
+7. **Dynamic data loading** - Components must fetch data from JSON via `src/lib/dataLoader.ts`. Never import static data files directly.
+8. **Data caching** - The dataLoader automatically caches fetched data. For development, hard-refresh the browser to see JSON changes.
+9. **Decap CMS** - Non-technical users should use `/admin/` for content updates. Developers can edit JSON files directly for quick testing.
 
 ## Image Management
 
 ### Standard Image Directories
+
 All images are stored in `public/assets/images/`:
 - `public/assets/images/people/` - Team member photos (400x400px recommended)
 - `public/assets/images/papers/` - Research paper thumbnails (500x300px recommended)
-- `public/assets/images/posts/` - News and blog post images
+- `public/assets/images/posts/` - News and blog post images (800x600px or wider)
 
 ### Image Naming Conventions
+
 - **People photos**: `bio-lastname.jpg` (e.g., `bio-chan.jpg`)
 - **Paper thumbnails**: `paperX.jpg` (e.g., `paper1.jpg`, `paper2.jpg`)
-- **Post images**: descriptive-name.jpg
+- **Post images**: `descriptive-name.jpg`
 
 ### Image URL Format
+
 Use absolute paths starting with `/assets/`:
 ```typescript
-image: '/assets/images/people/bio-lastname.jpg'
-// Renders as: /assets/images/people/bio-lastname.jpg
+image: '/assets/images/people/bio-chan.jpg'
+// Renders as: /assets/images/people/bio-chan.jpg
 ```
 
 ### Image Optimization
-- JPG format for photos (85% quality for web)
-- Keep file sizes under 500KB
-- Recommended dimensions:
+
+- **Format:** JPG for photos (85% quality for web)
+- **File size:** Keep under 500KB
+- **Dimensions:**
   - People photos: 400x400px (square)
   - Paper thumbnails: 500x300px
   - Post images: 800x600px or wider
+

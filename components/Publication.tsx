@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Link as LinkIcon } from 'lucide-react';
-import { PUBLICATIONS_BY_YEAR } from '../src/data/publications';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
+import { loadPublications } from '../src/lib/dataLoader';
+
+interface PublicationGroup {
+  year: number;
+  papers: any[];
+}
 
 export const Publication: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  const [publicationsByYear, setPublicationsByYear] = useState<PublicationGroup[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setBreadcrumbs([{ label: 'Publications' }]);
   }, [setBreadcrumbs]);
+
+  useEffect(() => {
+    loadPublications().then(data => {
+      setPublicationsByYear(data.PUBLICATIONS_BY_YEAR);
+      setLoading(false);
+    }).catch(error => {
+      console.error('Error loading publications:', error);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full max-w-5xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Publications</h1>
+        <p className="text-slate-600 dark:text-gray-300">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-5xl mx-auto">
@@ -26,7 +52,7 @@ export const Publication: React.FC = () => {
       </motion.div>
 
       <div className="space-y-16">
-        {PUBLICATIONS_BY_YEAR.map((group) => (
+        {publicationsByYear.map((group) => (
           <motion.div
             key={group.year}
             initial={{ opacity: 0 }}

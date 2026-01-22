@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowRight, Network } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { LAB_INFO } from '../src/data/labInfo';
+import { loadLabInfo, LabInfo } from '../src/lib/dataLoader';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -34,6 +34,16 @@ const imageVariants: Variants = {
 };
 
 export const Hero: React.FC = () => {
+  const [labInfo, setLabInfo] = useState<LabInfo | null>(null);
+
+  useEffect(() => {
+    loadLabInfo().then(data => {
+      setLabInfo(data.LAB_INFO);
+    }).catch(error => {
+      console.error('Error loading lab info:', error);
+    });
+  }, []);
+
   return (
     <motion.div
       className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-12 items-center w-full min-h-[600px]"
@@ -62,7 +72,7 @@ export const Hero: React.FC = () => {
             className="text-lg font-normal leading-relaxed text-slate-800 dark:text-gray-300 max-w-md"
             variants={itemVariants}
           >
-            {LAB_INFO.description}
+            {labInfo?.description || "Loading..."}
           </motion.p>
 
           <motion.div

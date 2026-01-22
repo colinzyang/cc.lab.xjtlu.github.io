@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Users, GraduationCap } from 'lucide-react';
-import { CONTACT, LAB_INFO } from '../src/data/labInfo';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
+import { loadLabInfo, ContactInfo, LabInfo } from '../src/lib/dataLoader';
 
 export const Contact: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  const [contact, setContact] = useState<ContactInfo | null>(null);
+  const [labInfo, setLabInfo] = useState<LabInfo | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setBreadcrumbs([{ label: 'Contact' }]);
   }, [setBreadcrumbs]);
+
+  useEffect(() => {
+    loadLabInfo().then(data => {
+      setContact(data.CONTACT);
+      setLabInfo(data.LAB_INFO);
+      setLoading(false);
+    }).catch(error => {
+      console.error('Error loading lab info:', error);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading || !contact || !labInfo) {
+    return (
+      <div className="w-full max-w-7xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Get in Touch</h1>
+        <p className="text-slate-600 dark:text-gray-300">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -23,7 +46,7 @@ export const Contact: React.FC = () => {
         <p className="text-xl text-slate-600 dark:text-gray-300 mb-12">
           Interested in our research or collaborations?<br />
           We'd love to hear from you!
-        </p>      
+        </p>
 
         <div className="space-y-8">
           <div className="flex items-start gap-4">
@@ -31,9 +54,9 @@ export const Contact: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Visit Us</h3>
               <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
-                {CONTACT.office}<br />
-                {LAB_INFO.fullName}<br />
-                {LAB_INFO.affiliation}
+                {contact.office}<br />
+                {labInfo.fullName}<br />
+                {labInfo.affiliation}
               </p>
             </div>
           </div>
@@ -43,8 +66,8 @@ export const Contact: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Email</h3>
               <p className="text-slate-600 dark:text-gray-400">
-                <a href={`mailto:${CONTACT.email}`} className="hover:text-primary transition-colors">
-                  {CONTACT.email}
+                <a href={`mailto:${contact.email}`} className="hover:text-primary transition-colors">
+                  {contact.email}
                 </a>
               </p>
             </div>
