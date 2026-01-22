@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Database, Terminal } from 'lucide-react';
+import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 
 const TOOLS = [
   {
@@ -27,6 +28,12 @@ const TOOLS = [
 ];
 
 export const Resources: React.FC = () => {
+  const { setBreadcrumbs } = useBreadcrumb();
+
+  React.useEffect(() => {
+    setBreadcrumbs([{ label: 'Resources' }]);
+  }, [setBreadcrumbs]);
+
   return (
     <div className="w-full max-w-6xl mx-auto">
       <motion.div
@@ -37,7 +44,7 @@ export const Resources: React.FC = () => {
       >
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Resources & Software</h1>
         <p className="text-xl text-slate-600 dark:text-gray-300">
-          We believe in open science. Access our open-source software, datasets, and web servers.
+          Software, datasets, and other resources from our lab.
         </p>
       </motion.div>
 

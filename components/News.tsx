@@ -1,35 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const NEWS_ITEMS = [
-  {
-    date: "October 24, 2024",
-    title: "Machine learning approaches for protein folding prediction published in Nature CS",
-    category: "Publication"
-  },
-  {
-    date: "September 12, 2024",
-    title: "Dr. Smith awarded the National Science Grant to study membrane proteins",
-    category: "Award"
-  },
-  {
-    date: "August 05, 2024",
-    title: "CC Lab presents three posters at the International Conference on Computational Biology",
-    category: "Conference"
-  },
-  {
-    date: "July 20, 2024",
-    title: "Welcome our new summer interns, Michael and Jessica!",
-    category: "Team"
-  },
-  {
-    date: "May 15, 2024",
-    title: "New high-performance computing cluster 'Alpha' is now online",
-    category: "Infrastructure"
-  }
-];
+import { NEWS_ITEMS } from '../src/data/news';
+import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 
 export const News: React.FC = () => {
+  const { setBreadcrumbs } = useBreadcrumb();
+
+  React.useEffect(() => {
+    setBreadcrumbs([{ label: 'News & Events' }]);
+  }, [setBreadcrumbs]);
+
   return (
     <div className="w-full max-w-4xl mx-auto">
       <motion.div

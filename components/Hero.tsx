@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Network } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { LAB_INFO } from '../src/data/labInfo';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -43,7 +44,7 @@ export const Hero: React.FC = () => {
       {/* Text Content */}
       <div className="lg:col-span-7 flex flex-col items-start gap-10">
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl xl:text-[6.5rem] font-black tracking-[-0.04em] leading-[0.9] text-slate-900 dark:text-white uppercase break-words"
+          className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-[-0.04em] leading-[0.9] text-slate-900 dark:text-white uppercase break-words"
           variants={itemVariants}
         >
           Structural<br />
@@ -61,7 +62,7 @@ export const Hero: React.FC = () => {
             className="text-lg font-normal leading-relaxed text-slate-800 dark:text-gray-300 max-w-md"
             variants={itemVariants}
           >
-            CC Lab specializes in Structural Bioinformatics & Molecular Dynamics to decipher the mechanisms of life at the atomic scale.
+            {LAB_INFO.description}
           </motion.p>
 
           <motion.div
@@ -81,7 +82,7 @@ export const Hero: React.FC = () => {
 
       {/* Visual Content */}
       <motion.div
-        className="lg:col-span-5 w-full h-full min-h-[400px] flex items-center justify-center relative group"
+        className="lg:col-span-5 w-full h-full min-h-[400px] flex items-center justify-center relative group lg:-mt-20 lg:ml-8"
         variants={imageVariants}
       >
         {/* Geometric Container */}

@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
         
         <div className="flex flex-col gap-2">
           <p className="text-sm font-medium text-slate-900 dark:text-gray-300">
-            © 2026 @ XJTLU Kevin. Chun Chan Lab.
+            © 2026 @ XJTLU Kevin. Chun Chan Lab
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             Department of bioscience and bioinformatics

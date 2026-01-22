@@ -61,13 +61,50 @@ All pages follow this layout structure. A `ScrollToTop` component automatically 
 All components are in the `components/` directory. Most are page-level components, except:
 - `Hero.tsx` - Landing section on home page
 - `RecentPosts.tsx` - Recent posts section on home page
+- `Breadcrumb.tsx` - Breadcrumb navigation component (context-driven)
 
 Navigation state is derived from React Router's `useLocation()` hook in `Navbar.tsx`.
 
+### Data Management
+**Centralized data structure** in `src/data/`:
+- `types.ts` - TypeScript interfaces for all data types (Member, Publication, NewsItem, ContactInfo)
+- `members.ts` - Lab members (PI, current members, alumni)
+- `publications.ts` - Research publications grouped by year
+- `news.ts` - News and events
+- `labInfo.ts` - Lab contact information and metadata
+
+**Key data types:**
+- `Member` - Includes name, role, bio, social links (email, GitHub, Google Scholar, ORCID), and type (member/alumn)
+- `Publication` - Includes title, journal, authors, DOI, preprint links (arXiv/bioRxiv)
+- `NewsItem` - Date, title, category, excerpt
+- `ContactInfo` - Email, office location, map URL
+
+**Data usage pattern:**
+```typescript
+import { PI, MEMBERS } from '../src/data/members';
+import { PUBLICATIONS_BY_YEAR } from '../src/data/publications';
+```
+
+### Context System
+**BreadcrumbContext** (`src/context/BreadcrumbContext.tsx`):
+- Global breadcrumb state management
+- Pages set breadcrumbs via `setBreadcrumbs()` in `useEffect`
+- Home page sets empty array to hide breadcrumbs
+- Breadcrumb display is centralized in `App.tsx` (conditionally rendered when `items.length > 0`)
+
+**Usage in pages:**
+```typescript
+const { setBreadcrumbs } = useBreadcrumb();
+React.useEffect(() => {
+  setBreadcrumbs([{ label: 'Page Name' }]);
+}, [setBreadcrumbs]);
+```
+
 ### Data
-- `metadata.json` - Contains name and description metadata (currently minimal)
+- `metadata.json` - Site name and description
+- All content data centralized in `src/data/` directory
 - No database or API integration
-- Content is likely hardcoded in components or can be added to metadata.json
+- Type-safe data management with TypeScript interfaces
 
 ### Dependencies
 - `react` & `react-dom` - UI framework
@@ -92,6 +129,91 @@ To deploy, the `dist/` folder is pushed to the repo. See the build command above
 1. **TypeScript is strict** - All files use strict type checking. Ensure proper typing for new components.
 2. **Dark mode is integrated** - Use `dark:` Tailwind classes for dark mode support. Test both themes.
 3. **Mobile responsive** - Navbar has mobile menu. Test at breakpoints (md: 768px).
-4. **Animations** - Framer Motion is used for Navbar mobile menu. Refer to `Navbar.tsx:63-67` for spring animation patterns.
+4. **Animations** - Framer Motion is used for Navbar mobile menu and component transitions. Refer to `Navbar.tsx:63-67` for spring animation patterns.
 5. **Icons** - lucide-react icons are available. See `Navbar.tsx:25` for usage example.
-6. **No state management library** - Components manage their own state with `useState`. Use React context if global state is needed.
+6. **Context for breadcrumbs** - All page-level components use `useBreadcrumb()` to set breadcrumbs. Home page sets empty array to hide breadcrumbs.
+7. **Centralized data** - All content (members, publications, news, contact info) lives in `src/data/`. Update data there, not in components.
+
+## Common Data Updates
+
+### Adding a New Team Member
+Edit `src/data/members.ts` and add to `MEMBERS` array:
+```typescript
+{
+  id: 'firstname_lastname',
+  name: 'Full Name, PhD',
+  role: 'Position Title',
+  title: 'Full Position Title',
+  image: '/assets/images/people/bio-lastname.jpg',
+  bio_long: 'Full biography...',
+  interest: 'Research interests',
+  email: 'email@xjtlu.edu.cn',
+  type: 'member'
+}
+```
+
+### Adding a New Publication
+Edit `src/data/publications.ts` and add to appropriate year's papers array:
+```typescript
+{
+  id: 6,
+  title: 'Paper Title',
+  journal: 'Journal Name',
+  date: '2024 Feb',
+  year: 2024,
+  authors: 'Author List',
+  link: 'https://doi.org/...',
+  doi: '10.xxxx/xxxxx',
+  preprint_url: 'https://arxiv.org/...',  // optional
+  preprint_label: 'arXiv'  // optional
+}
+```
+
+### Adding News/Events
+Edit `src/data/news.ts` and add to `NEWS_ITEMS` array:
+```typescript
+{
+  date: 'Month Year',
+  title: 'News Title',
+  category: 'Category',
+  excerpt: 'Brief description'
+}
+```
+
+### Updating Contact Information
+Edit `src/data/labInfo.ts` and modify `CONTACT` object:
+```typescript
+export const CONTACT: ContactInfo = {
+  email: 'email@xjtlu.edu.cn',
+  office: 'Office location',
+  mapUrl: 'https://maps.app.goo.gl/...'
+};
+```
+
+## Image Management
+
+### Standard Image Directories
+All images are stored in `public/assets/images/`:
+- `public/assets/images/people/` - Team member photos (400x400px recommended)
+- `public/assets/images/papers/` - Research paper thumbnails (500x300px recommended)
+- `public/assets/images/posts/` - News and blog post images
+
+### Image Naming Conventions
+- **People photos**: `bio-lastname.jpg` (e.g., `bio-chan.jpg`)
+- **Paper thumbnails**: `paperX.jpg` (e.g., `paper1.jpg`, `paper2.jpg`)
+- **Post images**: descriptive-name.jpg
+
+### Image URL Format
+Use absolute paths starting with `/assets/`:
+```typescript
+image: '/assets/images/people/bio-lastname.jpg'
+// Renders as: /assets/images/people/bio-lastname.jpg
+```
+
+### Image Optimization
+- JPG format for photos (85% quality for web)
+- Keep file sizes under 500KB
+- Recommended dimensions:
+  - People photos: 400x400px (square)
+  - Paper thumbnails: 500x300px
+  - Post images: 800x600px or wider

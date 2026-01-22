@@ -1,39 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Link as LinkIcon } from 'lucide-react';
-
-const PUBLICATIONS = [
-  {
-    year: 2024,
-    papers: [
-      {
-        title: "Deep learning approaches for protein folding prediction in non-standard environments",
-        authors: "Chen A, Wilson J, CC Lab PI",
-        journal: "Nature Computational Science",
-        link: "#"
-      },
-      {
-        title: "Structural dynamics of membrane transporters revealed by coarse-grained simulations",
-        authors: "Lee S, Kim D, CC Lab PI",
-        journal: "Biophysical Journal",
-        link: "#"
-      }
-    ]
-  },
-  {
-    year: 2023,
-    papers: [
-      {
-        title: "An efficient algorithm for large-scale genomic sequence alignment",
-        authors: "Wilson J, CC Lab PI",
-        journal: "Bioinformatics",
-        link: "#"
-      }
-    ]
-  }
-];
+import { PUBLICATIONS_BY_YEAR } from '../src/data/publications';
+import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 
 export const Publication: React.FC = () => {
+  const { setBreadcrumbs } = useBreadcrumb();
+
+  React.useEffect(() => {
+    setBreadcrumbs([{ label: 'Publications' }]);
+  }, [setBreadcrumbs]);
+
   return (
     <div className="w-full max-w-5xl mx-auto">
        <motion.div
@@ -44,12 +21,12 @@ export const Publication: React.FC = () => {
       >
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Publications</h1>
         <p className="text-xl text-slate-600 dark:text-gray-300 max-w-2xl">
-          Selected peer-reviewed articles and conference proceedings.
+          Selected lab publications, with links to papers and preprints.
         </p>
       </motion.div>
 
       <div className="space-y-16">
-        {PUBLICATIONS.map((group, groupIdx) => (
+        {PUBLICATIONS_BY_YEAR.map((group) => (
           <motion.div
             key={group.year}
             initial={{ opacity: 0 }}
@@ -64,20 +41,24 @@ export const Publication: React.FC = () => {
               </span>
             </div>
             <div className="flex-grow space-y-10">
-              {group.papers.map((paper, idx) => (
-                <div key={idx} className="group">
+              {group.papers.map((paper) => (
+                <div key={paper.id} className="group">
                   <h3 className="text-xl font-medium text-slate-900 dark:text-white leading-tight mb-2 group-hover:text-primary transition-colors">
-                    <a href={paper.link}>{paper.title}</a>
+                    <a href={paper.link} target="_blank" rel="noopener noreferrer">{paper.title}</a>
                   </h3>
                   <p className="text-slate-600 dark:text-gray-400 mb-1">{paper.authors}</p>
-                  <div className="flex items-center gap-4 text-sm">
+                  <div className="flex items-center gap-4 text-sm flex-wrap">
                     <span className="font-serif italic text-slate-500">{paper.journal}</span>
-                    <a href={paper.link} className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-wider hover:underline">
-                      <FileText className="w-3 h-3" /> PDF
-                    </a>
-                    <a href={paper.link} className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-wider hover:underline">
-                      <LinkIcon className="w-3 h-3" /> DOI
-                    </a>
+                    {paper.doi && (
+                      <a href={paper.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-wider hover:underline">
+                        <LinkIcon className="w-3 h-3" /> DOI
+                      </a>
+                    )}
+                    {paper.preprint_url && (
+                      <a href={paper.preprint_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-wider hover:underline">
+                        <FileText className="w-3 h-3" /> {paper.preprint_label}
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

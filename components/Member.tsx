@@ -1,66 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const PI = {
-  name: "Dr. Charles Carter",
-  role: "Principal Investigator",
-  image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800&h=1000",
-  bio: "Dr. Carter is a Professor of Computational Biology and the director of the CC Lab. His research focuses on developing novel algorithms for understanding protein dynamics and allosteric regulation.",
-  interest: "Molecular Dynamics, Drug Design"
-};
-
-const MEMBERS = [
-  {
-    name: "Dr. Alice Chen",
-    role: "Postdoctoral Fellow",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Protein Design, Deep Learning"
-  },
-  {
-    name: "James Wilson",
-    role: "Ph.D. Candidate",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Cryo-EM Data Processing"
-  },
-  {
-    name: "Sarah Lee",
-    role: "Ph.D. Candidate",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Molecular Dynamics Simulation"
-  },
-  {
-    name: "David Kim",
-    role: "Master Student",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Structural Bioinformatics"
-  },
-  {
-    name: "Dr. Robert Fox",
-    role: "Research Scientist",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Genomic Algorithms"
-  },
-  {
-    name: "Emily Zhang",
-    role: "Ph.D. Candidate",
-    image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "RNA Structure Prediction"
-  },
-  {
-    name: "Michael Torres",
-    role: "Undergraduate Researcher",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Machine Learning"
-  },
-  {
-    name: "Priya Patel",
-    role: "Lab Manager",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600&h=750",
-    interest: "Lab Operations"
-  }
-];
+import { PI, MEMBERS, ALUMNI } from '../src/data/members';
+import { Mail, Github, Linkedin, GraduationCap } from 'lucide-react';
+import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 
 export const Member: React.FC = () => {
+  const { setBreadcrumbs } = useBreadcrumb();
+
+  React.useEffect(() => {
+    setBreadcrumbs([{ label: 'People' }]);
+  }, [setBreadcrumbs]);
+
   return (
     <div className="w-full max-w-7xl mx-auto">
       {/* Header */}
@@ -70,9 +20,8 @@ export const Member: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">People</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Members</h1>
         <p className="text-xl text-slate-600 dark:text-gray-300 max-w-2xl">
-          We are a multidisciplinary team of biologists, computer scientists, and physicists.
         </p>
       </motion.div>
 
@@ -94,10 +43,34 @@ export const Member: React.FC = () => {
             <span className="text-primary font-bold tracking-widest uppercase text-sm mb-2">{PI.role}</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">{PI.name}</h2>
             <p className="text-lg text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">
-              {PI.bio}
+              {PI.bio_long}
             </p>
-            <div className="text-sm font-semibold text-slate-500 dark:text-gray-400">
-              Focus: {PI.interest}
+            {PI.interest && (
+              <div className="text-sm font-semibold text-slate-500 dark:text-gray-400 mb-4">
+                Focus: {PI.interest}
+              </div>
+            )}
+            <div className="flex gap-4 items-center">
+              {PI.email && (
+                <a href={`mailto:${PI.email}`} className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
+                  <Mail className="w-5 h-5" />
+                </a>
+              )}
+              {PI.github && (
+                <a href={`https://github.com/${PI.github}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
+                  <Github className="w-5 h-5" />
+                </a>
+              )}
+              {PI.google_scholar && (
+                <a href={`https://scholar.google.com/citations?user=${PI.google_scholar}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">
+                  <GraduationCap className="w-5 h-5" />
+                </a>
+              )}
+              {PI.orcid && (
+                <a href={`https://orcid.org/${PI.orcid}`} target="_blank" rel="noopener noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors text-xs font-bold">
+                  ORCID
+                </a>
+              )}
             </div>
          </div>
       </motion.div>
@@ -124,7 +97,7 @@ export const Member: React.FC = () => {
                 />
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{member.name}</h3>
-              <p className="text-primary font-medium text-sm my-1">{member.role}</p>
+              <p className="text-primary font-medium text-sm my-1">{member.title || member.role}</p>
               <p className="text-sm text-slate-500 dark:text-gray-400 leading-snug">{member.interest}</p>
             </motion.div>
           ))}
