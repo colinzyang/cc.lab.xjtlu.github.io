@@ -61,11 +61,11 @@ export const Contact: React.FC = () => {
         <form className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wide mb-2">Name</label>
-            <input type="text" id="name" className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="John Doe" />
+            <input type="text" id="name" className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="Dean Jie" />
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wide mb-2">Email</label>
-            <input type="email" id="email" className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com" />
+            <input type="email" id="email" className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="Dean@outlook.com" />
           </div>
           <div>
             <label htmlFor="message" className="block text-sm font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wide mb-2">Message</label>
