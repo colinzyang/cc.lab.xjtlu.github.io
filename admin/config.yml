@@ -1,0 +1,170 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+# 本地开发时使用 test-repo backend
+# backend:
+#   name: test-repo
+
+# 发布模式
+publish_mode: editorial_workflow
+
+# 媒体文件配置
+media_folder: "public/assets/images" # 媒体文件存储位置
+public_folder: "/assets/images" # 媒体文件的公共访问路径
+
+# 集合配置
+collections:
+  # 团队成员集合
+  - name: "members"
+    label: "Team Members"
+    folder: "public/data"
+    extension: "json"
+    format: "json"
+    identifier_field: "id"
+    editor:
+      preview: false
+    files:
+      - label: "Members Data"
+        name: "members"
+        file: "public/data/members.json"
+        fields:
+          - label: "Principal Investigator"
+            name: "pi"
+            widget: "object"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Title", name: "title", widget: "string", required: false}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
+              - {label: "Research Interest", name: "interest", widget: "string", required: false}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "GitHub Username", name: "github", widget: "string", required: false}
+              - {label: "Google Scholar ID", name: "google_scholar", widget: "string", required: false}
+              - {label: "ORCID", name: "orcid", widget: "string", required: false}
+              - {label: "Type", name: "type", widget: "select", options: ["member", "alumn"], default: "member"}
+
+          - label: "Current Members"
+            name: "members"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Title", name: "title", widget: "string", required: false}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
+              - {label: "Research Interest", name: "interest", widget: "string", required: false}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "GitHub Username", name: "github", widget: "string", required: false}
+              - {label: "Google Scholar ID", name: "google_scholar", widget: "string", required: false}
+              - {label: "ORCID", name: "orcid", widget: "string", required: false}
+              - {label: "Type", name: "type", widget: "select", options: ["member", "alumn"], default: "member"}
+
+          - label: "Alumni"
+            name: "alumni"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Current Position", name: "current_position", widget: "string", required: false}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Type", name: "type", widget: "hidden", default: "alumn"}
+
+  # 出版物集合
+  - name: "publications"
+    label: "Publications"
+    folder: "public/data"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - label: "Publications Data"
+        name: "publications"
+        file: "public/data/publications.json"
+        fields:
+          - label: "Publications by Year"
+            name: "byYear"
+            widget: "list"
+            fields:
+              - {label: "Year", name: "year", widget: "number", value_type: "int"}
+              - label: "Papers"
+                name: "papers"
+                widget: "list"
+                fields:
+                  - {label: "ID", name: "id", widget: "number", value_type: "int"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Journal", name: "journal", widget: "string"}
+                  - {label: "Date", name: "date", widget: "string"}
+                  - {label: "Year", name: "year", widget: "number", value_type: "int"}
+                  - {label: "Authors", name: "authors", widget: "text"}
+                  - {label: "Link (DOI URL)", name: "link", widget: "string"}
+                  - {label: "DOI", name: "doi", widget: "string", required: false}
+                  - {label: "Preprint URL", name: "preprint_url", widget: "string", required: false}
+                  - {label: "Preprint Label", name: "preprint_label", widget: "string", required: false, hint: "e.g., arXiv, bioRxiv"}
+                  - {label: "Image", name: "image", widget: "image", required: false}
+
+  # 新闻集合
+  - name: "news"
+    label: "News & Events"
+    folder: "public/data"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - label: "News Items"
+        name: "news"
+        file: "public/data/news.json"
+        fields:
+          - label: "News Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Date", name: "date", widget: "string", hint: "e.g., January 2024"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+
+  # 实验室信息集合
+  - name: "labInfo"
+    label: "Lab Information"
+    folder: "public/data"
+    extension: "json"
+    format: "json"
+    editor:
+      preview: false
+    files:
+      - label: "Lab Info & Contact"
+        name: "labInfo"
+        file: "public/data/labInfo.json"
+        fields:
+          - label: "Contact Information"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Office Location", name: "office", widget: "string"}
+              - {label: "Map Embed URL", name: "mapUrl", widget: "string", required: false}
+
+          - label: "Lab Details"
+            name: "lab"
+            widget: "object"
+            fields:
+              - {label: "Lab Name", name: "name", widget: "string"}
+              - {label: "Full Name", name: "fullName", widget: "string"}
+              - {label: "Tagline", name: "tagline", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Affiliation", name: "affiliation", widget: "string"}
+              - {label: "Department", name: "department", widget: "string"}
+              - label: "Research Centers"
+                name: "centers"
+                widget: "list"
+                fields:
+                  - {label: "Center Name", name: "name", widget: "string"}
+                  - {label: "Center URL", name: "url", widget: "string"}
