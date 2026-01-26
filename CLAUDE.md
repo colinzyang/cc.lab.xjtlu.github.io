@@ -159,15 +159,21 @@ Core libraries:
 
 No additional runtime dependencies for state management, HTTP, or CSS-in-JS. This keeps the bundle small.
 
-## GitHub Pages Deployment
+## Deployment
 
-The site is deployed to GitHub Pages with the following configuration:
-- **Base URL:** `./` (relative paths) - configured in `vite.config.ts:7`
+### Current Setup (Netlify)
+
+The site is deployed to Netlify with the following configuration:
+- **Base URL:** `/` (root path) - configured in `vite.config.ts:7`
 - **Build output:** `dist/` directory - configured in `vite.config.ts:8-11`
-- **Routing:** HashRouter ensures client-side routing works on static hosts
+- **Routing:** HashRouter enables client-side routing without backend requirements
 - **No sourcemaps:** `sourcemap: false` in production for smaller bundle size
 
-To deploy: commit the built `dist/` folder and push. The deploy process depends on your GitHub Pages setup (e.g., automatic builds with GitHub Actions or manual builds).
+Netlify automatically builds and deploys on push to the main branch. The build command runs `npm run build`, which outputs to `dist/`.
+
+### GitHub Pages Alternative
+
+For GitHub Pages deployment, change `base` in `vite.config.ts:7` to `'/repository-name/'` (adjust for your repository). HashRouter will continue to work since it's a static host.
 
 ## Content Management System (Decap CMS)
 
