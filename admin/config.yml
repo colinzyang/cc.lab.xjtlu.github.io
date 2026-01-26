@@ -81,6 +81,7 @@ collections:
     folder: "public/data"
     extension: "json"
     format: "json"
+    identifier_field: "id"
     editor:
       preview: false
     files:
@@ -115,6 +116,7 @@ collections:
     folder: "public/data"
     extension: "json"
     format: "json"
+    identifier_field: "date"
     editor:
       preview: false
     files:
@@ -137,6 +139,7 @@ collections:
     folder: "public/data"
     extension: "json"
     format: "json"
+    identifier_field: "id"
     editor:
       preview: false
     files:
