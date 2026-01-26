@@ -18,9 +18,6 @@ collections:
   # 团队成员集合
   - name: "members"
     label: "Team Members"
-    folder: "public/data"
-    extension: "json"
-    format: "json"
     identifier_field: "id"
     editor:
       preview: false
@@ -78,9 +75,6 @@ collections:
   # 出版物集合
   - name: "publications"
     label: "Publications"
-    folder: "public/data"
-    extension: "json"
-    format: "json"
     identifier_field: "id"
     editor:
       preview: false
@@ -113,9 +107,6 @@ collections:
   # 新闻集合
   - name: "news"
     label: "News & Events"
-    folder: "public/data"
-    extension: "json"
-    format: "json"
     identifier_field: "date"
     editor:
       preview: false
@@ -136,9 +127,6 @@ collections:
   # 实验室信息集合
   - name: "labInfo"
     label: "Lab Information"
-    folder: "public/data"
-    extension: "json"
-    format: "json"
     identifier_field: "id"
     editor:
       preview: false
