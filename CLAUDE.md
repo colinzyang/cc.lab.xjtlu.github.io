@@ -13,6 +13,8 @@ CC Lab is a research lab website for Structural Bioinformatics & Molecular Dynam
 - `npm run build` - Build for production (outputs to `dist/` directory)
 - `npm run preview` - Preview production build locally
 
+**Note:** There are no separate test, lint, or format commands. Type checking is integrated into the build process.
+
 ### Type Checking
 TypeScript strict mode is enabled. Type checking happens automatically during development and build. The IDE will show errors in real-time. No separate type checking command is needed—the build will fail if there are type errors.
 
@@ -161,19 +163,34 @@ No additional runtime dependencies for state management, HTTP, or CSS-in-JS. Thi
 
 ## Deployment
 
-### Current Setup (Netlify)
+### Current Setup (GitHub Pages with GitHub Actions)
 
-The site is deployed to Netlify with the following configuration:
+The site is deployed automatically to GitHub Pages using GitHub Actions. Configuration:
 - **Base URL:** `/` (root path) - configured in `vite.config.ts:7`
 - **Build output:** `dist/` directory - configured in `vite.config.ts:8-11`
 - **Routing:** HashRouter enables client-side routing without backend requirements
 - **No sourcemaps:** `sourcemap: false` in production for smaller bundle size
 
-Netlify automatically builds and deploys on push to the main branch. The build command runs `npm run build`, which outputs to `dist/`.
+### GitHub Actions Workflow
 
-### GitHub Pages Alternative
+**File:** `.github/workflows/deploy.yml`
 
-For GitHub Pages deployment, change `base` in `vite.config.ts:7` to `'/repository-name/'` (adjust for your repository). HashRouter will continue to work since it's a static host.
+The deployment workflow is triggered automatically on every push to the `main` branch:
+
+1. **Checkout** - Clones the repository code
+2. **Setup Node.js** - Installs Node.js v18 with npm dependency caching
+3. **Install dependencies** - Runs `npm install`
+4. **Build** - Runs `npm run build` to generate the `dist/` directory
+5. **Deploy** - Pushes the built site to GitHub Pages using `peaceiris/actions-gh-pages@v3`
+
+**Key points:**
+- The workflow publishes from the `dist/` directory
+- GitHub token authentication is automatic (uses `${{ secrets.GITHUB_TOKEN }}`)
+- Deployment URL is set in the GitHub Pages environment
+- npm dependencies are cached for faster builds
+- A custom domain CNAME entry is commented out (uncomment if using a custom domain)
+
+**To deploy:** Simply push commits to the `main` branch. The workflow runs automatically.
 
 ## Content Management System (Decap CMS)
 

@@ -1,5 +1,6 @@
-CC Lab Website - Structural Bioinformatics & Molecular Dynamics
-================================================================
+# CC Lab Website
+
+## Structural Bioinformatics & Molecular Dynamics Laboratory
 
 [English](#english) | [中文](#中文)
 
@@ -7,311 +8,356 @@ CC Lab Website - Structural Bioinformatics & Molecular Dynamics
 
 ## English
 
-### Project Overview
+### About CC Lab
 
-CC Lab is a research laboratory website built with modern web technologies. The site showcases research in Structural Bioinformatics & Molecular Dynamics at Xi'an Jiaotong-Liverpool University (XJTLU).
+CC Lab is a research laboratory website for Structural Bioinformatics & Molecular Dynamics at Xi'an Jiaotong-Liverpool University (XJTLU). The site is built with modern web technologies and showcases the lab's research, team members, and publications.
 
-Features:
-* Static site hosted on GitHub Pages
-* Responsive design with dark mode support
-* Content management via Decap CMS
-* Team member profiles and publication listings
-* Dynamic data loading from JSON files
+### Key Features
 
-### Quick Start
+- **Static Site on GitHub Pages** - Fast, reliable hosting with no backend required
+- **Content Management with Decap CMS** - Non-technical users can edit content through a visual interface
+- **Responsive Design & Dark Mode** - Works seamlessly across all devices and browser themes
+- **Dynamic Data Loading** - Content stored in JSON files for easy management and version control
+- **Modern Tech Stack** - React 18, TypeScript, Vite, and Tailwind CSS
 
-Prerequisites:
-* Node.js (v18 or higher)
-* npm or yarn
+### Quick Start for Development
 
-Installation:
+**Requirements:**
+- Node.js v18 or higher
+- npm or yarn
 
-1. Clone the repository:
-   $ git clone https://github.com/cc.lab.xjtlu.github.io.git
-   $ cd cc.lab.xjtlu.github.io
+**Setup:**
 
-2. Install dependencies:
-   $ npm install
+```bash
+# 1. Clone the repository
+git clone https://github.com/colinzyang/cc.lab.xjtlu.github.io.git
+cd cc.lab.xjtlu.github.io
 
-3. Start development server:
-   $ npm run dev
+# 2. Install dependencies
+npm install
 
-   Open http://localhost:5173 in your browser
+# 3. Start development server
+npm run dev
+# Open http://localhost:5173 in your browser
 
-4. Build for production:
-   $ npm run build
+# 4. Build for production
+npm run build
+```
 
 ### Technology Stack
 
-* React 18 - UI framework
-* TypeScript - Type safety
-* React Router v6 - Client-side routing with HashRouter
-* Tailwind CSS - Utility-first CSS (loaded via CDN)
-* Framer Motion - Animation library
-* Lucide React - Icon library
-* Vite - Build tool and dev server
-* Decap CMS - Headless content management system
+| Layer | Technology |
+|-------|-----------|
+| **UI Framework** | React 18 |
+| **Type Safety** | TypeScript 5 |
+| **Routing** | React Router v6 (HashRouter) |
+| **Styling** | Tailwind CSS (CDN) |
+| **Animations** | Framer Motion |
+| **Icons** | Lucide React |
+| **Build Tool** | Vite 5 |
+| **CMS** | Decap CMS (Git-based) |
 
 ### Project Structure
 
 ```
 .
-├── components/            Page-level React components
+├── components/                 Page components (Member, Publication, News, etc.)
 ├── src/
-│   ├── context/          React Context for global state
+│   ├── context/               React Context for breadcrumb state
 │   └── lib/
-│       └── dataLoader.ts Data fetching utilities
+│       └── dataLoader.ts       Data fetching & type definitions
 ├── public/
-│   ├── data/             JSON content files (managed by Decap CMS)
-│   ├── admin/            CMS interface configuration
-│   └── assets/images/    Team photos, publication thumbnails
-├── App.tsx               Main app component and routing
-├── index.html            HTML template with Tailwind config
-├── vite.config.ts        Vite build configuration
-└── tsconfig.json         TypeScript configuration
+│   ├── data/                   JSON data files (managed by CMS)
+│   │   ├── members.json
+│   │   ├── publications.json
+│   │   ├── news.json
+│   │   └── labInfo.json
+│   ├── admin/                  Decap CMS interface
+│   └── assets/images/          Team photos, paper thumbnails, blog images
+├── App.tsx                     Main app with routing
+├── index.html                  HTML template with Tailwind config
+├── vite.config.ts              Vite build configuration
+├── tsconfig.json               TypeScript configuration
+└── CLAUDE.md                   Developer guidelines
 ```
 
-### Routes
+### Site Routes
 
-* `/` - Home page with hero section and recent posts
-* `/#/member` - Team members page
-* `/#/publication` - Publications page
-* `/#/news` - News and events page
-* `/#/resources` - Resources page
-* `/#/contact` - Contact information page
+| Route | Description |
+|-------|-------------|
+| `/` | Home page with hero and recent posts |
+| `/#/member` | Team members page |
+| `/#/publication` | Research publications |
+| `/#/news` | News and events |
+| `/#/resources` | Resources |
+| `/#/contact` | Contact information |
 
-Note: Hash-based routing is used for GitHub Pages compatibility.
+**Note:** Hash-based routing (`/#/`) is used for GitHub Pages compatibility.
 
-### Content Management
+### Content Management with Decap CMS
 
-The site uses Decap CMS for content management. Non-technical users can edit content through a visual interface without modifying code.
+Decap CMS provides a user-friendly interface for managing site content without touching code.
 
-Accessing CMS:
-* Development: http://localhost:5173/admin/
-* Production: https://your-domain.com/admin/
+**Access CMS:**
+- **Development:** http://localhost:5173/admin/
+- **Production:** https://your-domain.com/admin/
 
-CMS collections:
-* Members - Team member profiles
-* Publications - Research papers organized by year
-* News - News and event announcements
-* Lab Info - Contact information and lab description
+**Editable Collections:**
+1. **Members** - Lab members (PI, current members, alumni)
+2. **Publications** - Research papers organized by year
+3. **News** - News and event announcements
+4. **Lab Info** - Lab description and contact information
 
-### Development
+**Manual Data Editing:**
+- Edit JSON files directly in `public/data/`
+- Changes are reflected immediately without restarting the dev server
+- Hard-refresh your browser (Cmd+Shift+R or Ctrl+Shift+R) to see changes during development
 
-Key TypeScript configurations:
-* Strict mode enabled
-* No unused variables or parameters allowed
-* No fallthrough switch cases
+### Development Commands
 
-For detailed development guidelines, see [CLAUDE.md](./CLAUDE.md)
+```bash
+npm run dev      # Start dev server (http://localhost:5173)
+npm run build    # Build for production (outputs to dist/)
+npm run preview  # Preview production build locally
+```
 
-### Building for Production
+**Type Checking:** TypeScript strict mode is enabled and automatically checked during development and build. The build will fail if there are type errors.
 
-$ npm run build
-
-Output is generated in the `dist/` directory. The build includes:
-* Optimized React code
-* Inline Tailwind CSS
-* Minified JavaScript bundle
-* Decap CMS admin interface
+**TypeScript Settings:**
+- `strict: true` - Full strict type checking
+- `noUnusedLocals: true` - Error on unused variables
+- `noUnusedParameters: true` - Error on unused parameters
+- `noFallthroughCasesInSwitch: true` - Error on missing switch cases
 
 ### Deployment
 
-The site is deployed to GitHub Pages:
+**Automatic Deployment with GitHub Actions**
 
-1. Build the project:
-   $ npm run build
+The site is automatically deployed to GitHub Pages whenever you push to the `main` branch.
 
-2. Commit the dist/ folder:
-   $ git add dist/
-   $ git commit -m "Build: update production build"
+**Workflow:** `.github/workflows/deploy.yml`
+1. Checkout code
+2. Setup Node.js v18
+3. Install dependencies (`npm install`)
+4. Build site (`npm run build`)
+5. Deploy to GitHub Pages
 
-3. Push to main branch:
-   $ git push origin main
-
-Note: Deployment process depends on your GitHub Pages configuration.
-Some setups use automatic builds with GitHub Actions.
+The workflow publishes the `dist/` directory to GitHub Pages. No manual deployment steps are required—just commit and push!
 
 ### Image Management
 
-Images should be placed in `public/assets/images/`:
-* `people/` - Team member photos (400x400px recommended)
-* `papers/` - Publication thumbnails (500x300px recommended)
-* `posts/` - News and blog images (800x600px or wider)
+**Image Directories:**
+- `public/assets/images/people/` - Team member photos (400x400px recommended)
+- `public/assets/images/papers/` - Publication thumbnails (500x300px recommended)
+- `public/assets/images/posts/` - News and blog images (800x600px or wider)
 
-Use absolute paths starting with `/assets/`:
-```
+**Naming Convention:**
+- People: `bio-lastname.jpg` (e.g., `bio-chan.jpg`)
+- Papers: `paperX.jpg` (e.g., `paper1.jpg`, `paper2.jpg`)
+- Posts: `descriptive-name.jpg`
+
+**URL Format:**
+```typescript
 image: '/assets/images/people/bio-lastname.jpg'
 ```
 
+**Optimization:**
+- Format: JPG for photos (85% quality for web)
+- File size: Keep under 500KB
+- Use the recommended dimensions above
+
 ### Browser Support
 
-* Chrome (latest)
-* Firefox (latest)
-* Safari (latest)
-* Edge (latest)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-The site uses CSS Grid and Flexbox. Mobile-first responsive design with breakpoints at 768px (md) and 1024px (lg).
+The site uses CSS Grid and Flexbox with mobile-first responsive design. Breakpoints: 768px (md) and 1024px (lg).
+
+### Developer Documentation
+
+For detailed development guidelines, architecture overview, and best practices, see [CLAUDE.md](./CLAUDE.md).
+
+### License
+
+This project is provided as-is.
 
 ---
 
 ## 中文
 
-### 项目概述
+### 关于 CC Lab
 
-CC Lab 网站是使用现代网络技术构建的研究实验室网站。该网站展示了西交利物浦大学 (XJTLU) 结构生物信息学与分子动力学的研究工作。
+CC Lab 是西交利物浦大学 (XJTLU) 结构生物信息学与分子动力学研究实验室的网站。网站采用现代网络技术构建，展示实验室的研究、团队成员和论文发表。
 
-功能特性:
-* 部署在 GitHub Pages 上的静态网站
-* 响应式设计并支持深色模式
-* 通过 Decap CMS 进行内容管理
-* 团队成员简介和论文列表
-* 从 JSON 文件动态加载数据
+### 主要特性
 
-### 快速开始
+- **GitHub Pages 静态网站** - 快速可靠的托管，无需后端服务
+- **Decap CMS 内容管理** - 非技术用户可通过可视化界面编辑内容
+- **响应式设计与深色模式** - 在所有设备和浏览器主题上完美显示
+- **动态数据加载** - 内容存储在 JSON 文件中，便于管理和版本控制
+- **现代技术栈** - React 18、TypeScript、Vite 和 Tailwind CSS
 
-前置要求:
-* Node.js (v18 或更高版本)
-* npm 或 yarn
+### 开发快速开始
 
-安装步骤:
+**前置要求:**
+- Node.js v18 或更高版本
+- npm 或 yarn
 
-1. 克隆仓库:
-   $ git clone https://github.com/cc.lab.xjtlu.github.io.git
-   $ cd cc.lab.xjtlu.github.io
+**设置:**
 
-2. 安装依赖:
-   $ npm install
+```bash
+# 1. 克隆仓库
+git clone https://github.com/colinzyang/cc.lab.xjtlu.github.io.git
+cd cc.lab.xjtlu.github.io
 
-3. 启动开发服务器:
-   $ npm run dev
+# 2. 安装依赖
+npm install
 
-   在浏览器中打开 http://localhost:5173
+# 3. 启动开发服务器
+npm run dev
+# 在浏览器中打开 http://localhost:5173
 
-4. 构建生产版本:
-   $ npm run build
+# 4. 构建生产版本
+npm run build
+```
 
 ### 技术栈
 
-* React 18 - UI 框架
-* TypeScript - 类型安全
-* React Router v6 - 客户端路由 (使用 HashRouter)
-* Tailwind CSS - 功能优先 CSS (通过 CDN 加载)
-* Framer Motion - 动画库
-* Lucide React - 图标库
-* Vite - 构建工具和开发服务器
-* Decap CMS - 无头内容管理系统
+| 层级 | 技术 |
+|------|------|
+| **UI 框架** | React 18 |
+| **类型安全** | TypeScript 5 |
+| **路由** | React Router v6 (HashRouter) |
+| **样式** | Tailwind CSS (CDN) |
+| **动画** | Framer Motion |
+| **图标** | Lucide React |
+| **构建工具** | Vite 5 |
+| **CMS** | Decap CMS (基于 Git) |
 
 ### 项目结构
 
 ```
 .
-├── components/            页面级 React 组件
+├── components/                 页面组件 (成员、论文、新闻等)
 ├── src/
-│   ├── context/          React Context 全局状态
+│   ├── context/               React Context (面包屑导航状态)
 │   └── lib/
-│       └── dataLoader.ts 数据加载工具
+│       └── dataLoader.ts       数据加载和类型定义
 ├── public/
-│   ├── data/             JSON 内容文件 (由 Decap CMS 管理)
-│   ├── admin/            CMS 界面配置
-│   └── assets/images/    团队照片、论文缩略图
-├── App.tsx               主应用组件和路由
-├── index.html            HTML 模板 (含 Tailwind 配置)
-├── vite.config.ts        Vite 构建配置
-└── tsconfig.json         TypeScript 配置
+│   ├── data/                   JSON 数据文件 (由 CMS 管理)
+│   │   ├── members.json
+│   │   ├── publications.json
+│   │   ├── news.json
+│   │   └── labInfo.json
+│   ├── admin/                  Decap CMS 界面
+│   └── assets/images/          团队照片、论文缩略图、博客图像
+├── App.tsx                     主应用和路由配置
+├── index.html                  HTML 模板 (含 Tailwind 配置)
+├── vite.config.ts              Vite 构建配置
+├── tsconfig.json               TypeScript 配置
+└── CLAUDE.md                   开发者指南
 ```
 
-### 路由
+### 网站路由
 
-* `/` - 首页 (包含 Hero 区域和最新文章)
-* `/#/member` - 团队成员页面
-* `/#/publication` - 论文发表页面
-* `/#/news` - 新闻和事件页面
-* `/#/resources` - 资源页面
-* `/#/contact` - 联系方式页面
+| 路由 | 描述 |
+|------|------|
+| `/` | 首页 (Hero 区域和最新文章) |
+| `/#/member` | 团队成员页面 |
+| `/#/publication` | 研究论文页面 |
+| `/#/news` | 新闻和事件页面 |
+| `/#/resources` | 资源页面 |
+| `/#/contact` | 联系方式页面 |
 
-注意: 使用基于 Hash 的路由以兼容 GitHub Pages。
+**说明:** 使用基于 Hash 的路由 (`/#/`) 以兼容 GitHub Pages。
 
-### 内容管理
+### Decap CMS 内容管理
 
-该网站使用 Decap CMS 进行内容管理。非技术用户可以通过可视化界面编辑内容，无需修改代码。
+Decap CMS 提供用户友好的界面来管理网站内容，无需接触代码。
 
-访问 CMS:
-* 开发环境: http://localhost:5173/admin/
-* 生产环境: https://your-domain.com/admin/
+**访问 CMS:**
+- **开发环境:** http://localhost:5173/admin/
+- **生产环境:** https://your-domain.com/admin/
 
-CMS 集合:
-* Members - 团队成员简介
-* Publications - 按年份组织的研究论文
-* News - 新闻和事件公告
-* Lab Info - 联系方式和实验室描述
+**可编辑的集合:**
+1. **Members** - 实验室成员 (PI、当前成员、校友)
+2. **Publications** - 按年份组织的研究论文
+3. **News** - 新闻和事件公告
+4. **Lab Info** - 实验室描述和联系方式
 
-### 开发指南
+**手动编辑数据:**
+- 直接编辑 `public/data/` 中的 JSON 文件
+- 更改会立即生效，无需重启开发服务器
+- 开发过程中需要硬刷新浏览器 (Cmd+Shift+R 或 Ctrl+Shift+R) 才能看到更改
 
-TypeScript 配置关键点:
-* 启用严格模式
-* 禁止未使用的变量和参数
-* 禁止 switch 语句中的贯穿情况
+### 开发命令
 
-详细的开发指南请参考 [CLAUDE.md](./CLAUDE.md)
+```bash
+npm run dev      # 启动开发服务器 (http://localhost:5173)
+npm run build    # 构建生产版本 (输出到 dist/)
+npm run preview  # 本地预览生产构建
+```
 
-### 生产构建
+**类型检查:** TypeScript 严格模式已启用，在开发和构建过程中自动检查。如果存在类型错误，构建将失败。
 
-$ npm run build
-
-输出生成在 `dist/` 目录中。构建内容包括:
-* 优化的 React 代码
-* 内联 Tailwind CSS
-* 最小化的 JavaScript 包
-* Decap CMS 管理界面
+**TypeScript 配置:**
+- `strict: true` - 完整的严格类型检查
+- `noUnusedLocals: true` - 未使用的变量会报错
+- `noUnusedParameters: true` - 未使用的参数会报错
+- `noFallthroughCasesInSwitch: true` - 缺失的 switch 分支会报错
 
 ### 部署
 
-网站部署在 GitHub Pages:
+**使用 GitHub Actions 自动部署**
 
-1. 构建项目:
-   $ npm run build
+只要您推送到 `main` 分支，网站就会自动部署到 GitHub Pages。
 
-2. 提交 dist/ 文件夹:
-   $ git add dist/
-   $ git commit -m "Build: update production build"
+**工作流:** `.github/workflows/deploy.yml`
+1. 检出代码
+2. 设置 Node.js v18
+3. 安装依赖 (`npm install`)
+4. 构建网站 (`npm run build`)
+5. 部署到 GitHub Pages
 
-3. 推送到主分支:
-   $ git push origin main
-
-注意: 部署过程取决于您的 GitHub Pages 配置。
-某些设置使用 GitHub Actions 进行自动构建。
+工作流自动发布 `dist/` 目录到 GitHub Pages。无需手动部署步骤——只需提交并推送！
 
 ### 图像管理
 
-图像应放置在 `public/assets/images/` 中:
-* `people/` - 团队照片 (建议 400x400px)
-* `papers/` - 论文缩略图 (建议 500x300px)
-* `posts/` - 新闻和博客图像 (建议 800x600px 或更大)
+**图像目录:**
+- `public/assets/images/people/` - 团队照片 (建议 400x400px)
+- `public/assets/images/papers/` - 论文缩略图 (建议 500x300px)
+- `public/assets/images/posts/` - 新闻和博客图像 (建议 800x600px 或更大)
 
-使用以 `/assets/` 开头的绝对路径:
-```
+**命名规范:**
+- 人物: `bio-lastname.jpg` (例如 `bio-chan.jpg`)
+- 论文: `paperX.jpg` (例如 `paper1.jpg`, `paper2.jpg`)
+- 文章: `descriptive-name.jpg`
+
+**URL 格式:**
+```typescript
 image: '/assets/images/people/bio-lastname.jpg'
 ```
 
-### 浏览器兼容性
+**优化建议:**
+- 格式: JPG 格式 (85% 网页质量)
+- 文件大小: 保持在 500KB 以下
+- 使用上述推荐尺寸
 
-* Chrome (最新版本)
-* Firefox (最新版本)
-* Safari (最新版本)
-* Edge (最新版本)
+### 浏览器支持
 
-本网站使用 CSS Grid 和 Flexbox。采用移动优先的响应式设计，断点位于 768px (md) 和 1024px (lg)。
+- Chrome (最新版本)
+- Firefox (最新版本)
+- Safari (最新版本)
+- Edge (最新版本)
 
----
+网站使用 CSS Grid 和 Flexbox，采用移动优先的响应式设计。断点: 768px (md) 和 1024px (lg)。
 
-### Documentation | 文档
+### 开发者文档
 
-* [CLAUDE.md](./CLAUDE.md) - Development guidelines for Claude Code and future developers
-* [CLAUDE.md](./CLAUDE.md) - 针对 Claude Code 和未来开发人员的开发指南
+详细的开发指南、架构概述和最佳实践，请参见 [CLAUDE.md](./CLAUDE.md)。
 
-### License | 许可证
-
-This project is provided as-is.
+### 许可证
 
 本项目按现状提供。
