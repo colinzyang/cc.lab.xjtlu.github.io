@@ -1,22 +1,23 @@
 {
   "pi": {
-    "id": "kevin_chan",
+    "google_scholar": "rSZrshkAAAAJ&hl=en",
+    "github": "skblnw",
+    "interest": "Structural Bioinformatics, Molecular Dynamics, Machine Learning",
     "name": "Kevin Chan, PhD",
+    "bio_long": "Kevin is the Principal Investigator of the lab. He received his PhD from City University of Hong Kong (CityUHK) and completed postdoctoral training at The Ohio State University (OSU). His research focuses on developing computational methods for understanding complex biological systems. Before starting the lab, he worked in Zhejiang University (ZJU) developing machine learning algorithms for drug discovery. He joined the faculty in 2024. He is also a member of the Center for Intelligent RNA Therapeutics at XJTLU.",
     "role": "Principal Investigator",
     "title": "Assistant Professor; Principal Investigator",
+    "type": "member",
+    "id": "kevin_chan",
     "image": "/assets/images/people/cc.jpg",
-    "bio_long": "Kevin is the Principal Investigator of the lab. He received his PhD from City University of Hong Kong (CityUHK) and completed postdoctoral training at The Ohio State University (OSU). His research focuses on developing computational methods for understanding complex biological systems. Before starting the lab, he worked in Zhejiang University (ZJU) developing machine learning algorithms for drug discovery. He joined the faculty in 2024. He is also a member of the Center for Intelligent RNA Therapeutics at XJTLU.",
-    "interest": "Structural Bioinformatics, Molecular Dynamics, Machine Learning",
-    "email": "Chun.Chan@xjtlu.edu.cn",
-    "github": "skblnw",
-    "google_scholar": "rSZrshkAAAAJ&hl=en",
     "orcid": "0000-0002-3705-1835",
-    "type": "member"
+    "email": "Chun.Chan@xjtlu.edu.cn"
   },
   "members": [
     {
-      "id": "qiujie_zhu",
+      "interest": "Lab Operations, Computational Infrastructure",
       "name": "Qiujie Zhu",
+      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
       "role": "Lab Manager",
       "title": "Lab Manager/Technician",
       "image": "/assets/images/people/Qiujie_Zhu.jpg",

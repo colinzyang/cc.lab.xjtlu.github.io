@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Microscope, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ export const Navbar: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 h-20 flex items-center justify-between">
         {/* Logo Area */}
         <Link to="/" className="flex items-center gap-3 select-none cursor-pointer group">
-          <Microscope className="text-primary w-8 h-8 group-hover:scale-110 transition-transform duration-300" strokeWidth={2.5} />
+          <span className="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300">hexagon</span>
           <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight uppercase leading-none">
             CC Lab
           </h2>
@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay 移动端响应式菜单待补充蒙版背景 */} 
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
