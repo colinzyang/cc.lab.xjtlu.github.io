@@ -50,9 +50,9 @@ export const Contact: React.FC = () => {
 
         <div className="space-y-8">
           <div className="flex items-start gap-4">
-            <MapPin className="w-6 h-6 text-primary mt-1" />
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Visit Us</h3>
+            <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Visit Us</h3>
               <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
                 {contact.office}<br />
                 {labInfo.fullName}<br />
@@ -62,21 +62,9 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <Mail className="w-6 h-6 text-primary mt-1" />
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Email</h3>
-              <p className="text-slate-600 dark:text-gray-400">
-                <a href={`mailto:${contact.email}`} className="hover:text-primary transition-colors">
-                  {contact.email}
-                </a>
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-4">
-            <GraduationCap className="w-6 h-6 text-primary mt-1" />
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Join</h3>
+            <GraduationCap className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Join</h3>
               <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
                 We're always looking for talented and motivated individuals to join our team.
                 Opportunities for graduate students, postdocs, and undergraduate researchers.
@@ -85,15 +73,34 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <Users className="w-6 h-6 text-primary mt-1" />
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Collaborations</h3>
+            <Users className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Collaborations</h3>
               <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
                 We actively seek collaborations with experimental labs, clinicians, and industry partners.
               </p>
             </div>
+
           </div>
+
+          <div className="flex items-start gap-4">
+            <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Email</h3>
+              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
+                <a href={`mailto:${contact.email}`} className="hover:text-primary transition-colors">
+                  {contact.email}
+                </a>
+              </p>
+            </div>
+
+          </div>
+
         </div>
+
+
+
+
       </motion.div>
 
       <motion.div
