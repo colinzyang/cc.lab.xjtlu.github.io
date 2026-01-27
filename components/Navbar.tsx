@@ -57,16 +57,27 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay 移动端响应式菜单待补充蒙版背景 */} 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed inset-0 bg-white dark:bg-background-dark z-50 flex flex-col p-6 md:hidden"
-          >
+          <>
+            {/* 蒙版背景 */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black/45 dark:bg-black/50 z-40 md:hidden"
+            />
+            {/* 菜单面板 */}
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              className="fixed right-0 top-0 h-screen w-full bg-white dark:bg-background-dark z-50 flex flex-col p-6 md:hidden"
+            >
             <div className="flex justify-end mb-8">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -89,7 +100,8 @@ export const Navbar: React.FC = () => {
                 </Link>
               ))}
             </nav>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
