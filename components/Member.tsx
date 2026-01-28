@@ -111,7 +111,7 @@ export const Member: React.FC = () => {
         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
           Current Members
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12">
           {members.map((member, idx) => (
             <motion.div
               key={member.name}

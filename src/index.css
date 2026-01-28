@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #004a99;
+  --color-background-light: #ffffff;
+  --color-background-dark: #0f1923;
+
+  --font-family-sans: Inter, sans-serif;
+  --font-family-display: Inter, sans-serif;
+
+  --font-size-huge: 6.5rem;
+  --font-line-height-huge: 0.9;
+  --font-letter-spacing-huge: -0.04em;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

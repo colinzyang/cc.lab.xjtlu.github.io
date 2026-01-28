@@ -92,7 +92,7 @@ export const Hero: React.FC = () => {
 
       {/* Visual Content */}
       <motion.div
-        className="lg:col-span-5 w-full h-full min-h-[400px] flex items-center justify-center relative group lg:-mt-20 lg:ml-8"
+        className="lg:col-span-5 w-full h-full min-h-[400px] flex items-center justify-center relative group lg:-mt-20"
         variants={imageVariants}
       >
         {/* Geometric Container */}
