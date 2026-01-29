@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
             <Link
               key={link.name}
               to={link.href}
-              className={`text-sm font-medium transition-colors duration-200 relative group ${
+              className={`text-sm font-semibold transition-colors duration-200 relative group ${
                 isActive(link.href) ? 'text-primary' : 'text-slate-900 dark:text-white hover:text-primary'
               }`}
             >
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`text-2xl font-medium ${
+                  className={`text-2xl font-semibold ${
                     isActive(link.href) ? 'text-primary' : 'text-slate-900 dark:text-white hover:text-primary'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
