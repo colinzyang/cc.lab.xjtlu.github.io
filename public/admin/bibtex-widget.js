@@ -212,6 +212,9 @@
 
     handleParse() {
       const { bibtexInput } = this.state;
+      console.log('=== handleParse called ===');
+      console.log('Input length:', bibtexInput.length);
+
       if (!bibtexInput.trim()) {
         this.setState({ errors: ['Please enter BibTeX content'], previewMode: false });
         return;
@@ -225,9 +228,14 @@
           existingPubs.push(...yearGroup.papers);
         }
       });
+      console.log('Existing publications count:', existingPubs.length);
 
       const result = parseBibtex(bibtexInput, 1);
+      console.log('Parsed entries count:', result.entries.length);
+      console.log('Parse errors:', result.errors);
+
       const duplicates = result.entries.filter(entry => isDuplicate(entry, existingPubs));
+      console.log('Duplicates found:', duplicates.length);
 
       this.setState({
         parsedEntries: result.entries,
@@ -256,10 +264,15 @@
       const { parsedEntries } = this.state;
       const value = this.getNormalizedValue();
 
-      if (parsedEntries.length === 0) return;
+      console.log('=== handleAddToList called ===');
+      console.log('parsedEntries count:', parsedEntries.length);
+      console.log('parsedEntries:', JSON.stringify(parsedEntries, null, 2));
+      console.log('current value (existing publications):', JSON.stringify(value, null, 2));
 
-      console.log('handleAddToList - parsedEntries:', parsedEntries);
-      console.log('handleAddToList - current value:', value);
+      if (parsedEntries.length === 0) {
+        console.warn('handleAddToList - No parsed entries to add');
+        return;
+      }
 
       // Get max ID from existing entries
       let maxId = 0;
@@ -305,9 +318,12 @@
 
       // Deep clone to ensure CMS detects the change (removes any reactive proxies)
       const cleanValue = JSON.parse(JSON.stringify(newValue));
-      console.log('handleAddToList - cleanValue to save:', cleanValue);
+      console.log('=== handleAddToList result ===');
+      console.log('Total year groups:', cleanValue.length);
+      console.log('cleanValue to save:', JSON.stringify(cleanValue, null, 2));
 
       this.props.onChange(cleanValue);
+      console.log('onChange called successfully');
 
       // Show success message
       this.setState({
