@@ -13,6 +13,8 @@ CC Lab is a research lab website for Structural Bioinformatics & Molecular Dynam
 - `npm run build` - Build for production (outputs to `dist/` directory)
 - `npm run preview` - Preview production build locally
 
+**Requirements:** Node.js v18 or higher.
+
 **Note:** There are no separate test, lint, or format commands. Type checking is integrated into the build process.
 
 ### Type Checking
@@ -34,15 +36,22 @@ TypeScript configuration (`tsconfig.json`):
 ├── src/
 │   ├── context/          # React Context (BreadcrumbContext)
 │   └── lib/
-│       └── dataLoader.ts # Data fetching & type definitions
+│       ├── dataLoader.ts # Data fetching & type definitions
+│       └── utils/
+│           └── bibtexParser.ts # BibTeX parsing utilities
 ├── public/
 │   ├── data/             # JSON data files (managed by Decap CMS)
 │   ├── admin/            # Decap CMS configuration & interface
+│   │   ├── config.yml    # CMS collection definitions
+│   │   ├── index.html    # CMS entry point
+│   │   └── bibtex-widget.js # Custom BibTeX import widget
 │   └── assets/images/    # Team photos, paper thumbnails, etc.
+├── src/index.css         # Tailwind CSS v4 theme configuration
 ├── App.tsx               # Main app component & routing
 ├── index.tsx             # React entry point
-├── index.html            # HTML template (Tailwind CDN config)
+├── index.html            # HTML template
 ├── vite.config.ts        # Vite configuration
+├── postcss.config.js     # PostCSS configuration (Tailwind CSS v4)
 └── tsconfig.json         # TypeScript configuration
 ```
 
@@ -59,7 +68,7 @@ Routes defined in `App.tsx`:
 - `/contact` - Contact page
 - `*` - Catch-all redirects to home
 
-**Important:** Always use hash-based links when adding new routes. The base is set to `./` in `vite.config.ts` for relative path handling on GitHub Pages.
+**Important:** Always use hash-based links when adding new routes. The base is set to `/` in `vite.config.ts`. For GitHub Pages deployment to a subdirectory (e.g., `/repo-name/`), change `base` to match the repository name.
 
 ### Layout Structure
 
@@ -72,23 +81,23 @@ All pages follow this layout structure. A `ScrollToTop` component automatically 
 
 ### Styling
 
-- **Tailwind CSS** - Loaded via CDN in `index.html` (not a PostCSS pipeline)
-- **Custom Tailwind config** defined in `index.html:12-30`:
-  - Primary color: `#004a99` (used for links, highlights)
-  - Background light: `#FFFFFF`
-  - Background dark: `#0f1923`
+- **Tailwind CSS v4** - Uses PostCSS pipeline (`postcss.config.js`) with `@tailwindcss/postcss` plugin
+- **Theme configuration** in `src/index.css` using `@theme` directive:
+  - Primary color: `--color-primary: #004a99`
+  - Background colors: `--color-background-light/dark`
   - Font: Inter (from Google Fonts)
-  - Custom font size: `huge` for large headings
-- **Dark mode** - Class-based dark mode support using `dark:` prefix
-- **No CSS files** - All styling via Tailwind utility classes (no `.css` files in the repo)
+  - Custom font size: `huge` (6.5rem) for large headings
+- **Dark mode** - Class-based dark mode using `dark:` prefix (set `class="dark"` on `<html>`)
+- **Usage**: Apply Tailwind classes directly in JSX (e.g., `bg-primary`, `text-slate-900 dark:text-white`)
 
-When adding styles, use Tailwind classes directly in JSX. To support dark mode, use `dark:` variants (e.g., `bg-white dark:bg-background-dark`).
+When adding custom theme values, edit `src/index.css` within the `@theme` block.
 
 ### Component Organization
 
 All page components are in the `components/` directory. Most are full-page components (Member, Publication, News, Contact, Resources, Home). Sub-components include:
 - `Hero.tsx` - Landing section on home page
 - `RecentPosts.tsx` - Recent posts section on home page
+- `Team.tsx` - Team section component (used on home page)
 - `Breadcrumb.tsx` - Breadcrumb navigation (context-driven)
 - `Navbar.tsx` - Header with navigation and mobile menu
 - `Footer.tsx` - Footer
@@ -103,11 +112,45 @@ Navigation state is derived from React Router's `useLocation()` hook in `Navbar.
 - `public/data/news.json` - News and events
 - `public/data/labInfo.json` - Lab contact information and metadata
 
+**Publication data structure:** Publications are stored as an array of year groups, each containing a `year` and `papers` array:
+```typescript
+// publications.json structure
+{
+  "publications": [
+    {
+      "year": 2024,
+      "papers": [
+        {
+          "id": 1,
+          "title": "Paper Title",
+          "journal": "Journal Name",
+          "date": "Jan 2024",
+          "year": 2024,
+          "authors": "Author A, Author B",
+          "link": "https://doi.org/10.xxxx",
+          "doi": "10.xxxx/xxx",
+          "image": "/assets/images/papers/paper1.jpg",
+          "bibtexKey": "author2024paper",
+          "preprint_url": "https://arxiv.org/abs/xxxx",
+          "preprint_label": "arXiv"
+        }
+      ]
+    }
+  ]
+}
+```
+
 **Data loading:** `src/lib/dataLoader.ts` provides:
 - Type definitions for all data types (Member, Publication, NewsItem, ContactInfo, LabInfo)
 - Async loader functions: `loadMembers()`, `loadPublications()`, `loadNews()`, `loadLabInfo()`
 - Built-in caching to avoid redundant fetches
 - `preloadAllData()` called on app startup in `App.tsx`
+
+**BibTeX parsing utility:** `src/lib/utils/bibtexParser.ts` provides:
+- `parseBibtexString(bibtex, startId)` - Parse BibTeX string into publication objects
+- `convertAuthorFormat(authors)` - Convert BibTeX author format to display format
+- `isDuplicate(pub, existingPubs)` - Check for duplicates by DOI or title
+- `ParsedPublication` and `ParseResult` types for type-safe parsing
 
 **Component pattern for data fetching:**
 ```typescript
@@ -132,6 +175,24 @@ export const MyComponent: React.FC = () => {
 
 **Development tip:** Data caching means hard-refreshing the browser (Cmd+Shift+R or Ctrl+Shift+R) is needed to see JSON file changes during development.
 
+**Publication interface:** The `Publication` type in `dataLoader.ts` includes optional fields for preprints:
+```typescript
+interface Publication {
+  id: number;
+  title: string;
+  journal: string;
+  date: string;
+  year: number;
+  authors: string;
+  link: string;
+  doi?: string;
+  preprint_url?: string;    // e.g., https://arxiv.org/abs/xxxx
+  preprint_label?: string;  // e.g., "arXiv", "bioRxiv"
+  image?: string;
+  bibtexKey?: string;       // BibTeX citation key
+}
+```
+
 ### Context System
 
 **BreadcrumbContext** (`src/context/BreadcrumbContext.tsx`):
@@ -154,10 +215,16 @@ Core libraries:
 - `react` & `react-dom` - UI framework
 - `react-router-dom` - Client-side routing with HashRouter
 - `framer-motion` - Animation library (used for Navbar mobile menu and component transitions)
-- `lucide-react` - Icon library (used throughout for UI icons)
+- `lucide-react` - Icon library (primary UI icons)
+- `tailwindcss` v4 & `@tailwindcss/postcss` - Styling via PostCSS pipeline
 - `typescript` - Type safety
 - `vite` - Build tool and dev server
 - `@vitejs/plugin-react` - React support in Vite
+- `@orcid/bibtex-parse-js` - BibTeX parsing library for publication imports
+
+Icon libraries:
+- `lucide-react` - Primary icon library (import as needed)
+- Material Symbols - Secondary icons loaded via Google Fonts CDN in `index.html`
 
 No additional runtime dependencies for state management, HTTP, or CSS-in-JS. This keeps the bundle small.
 
@@ -222,6 +289,29 @@ npm run dev
 3. **News** - Create news and event entries
 4. **Lab Info** - Update contact information and lab description
 
+### Custom CMS Widgets
+
+**BibTeX Import Widget** (`public/admin/bibtex-widget.js`)
+
+A custom Decap CMS widget that enables batch importing of BibTeX entries into the publications collection.
+
+**Features:**
+- Parse multiple BibTeX entries at once
+- Automatic author name format conversion (BibTeX "Last, First" → "First Last")
+- DOI-based link generation
+- Preprint detection (arXiv, bioRxiv, ChemRxiv)
+- Duplicate detection (by DOI or normalized title)
+- Edit/delete existing publications directly in CMS
+
+**How it works:**
+1. Access the CMS at `/admin/`
+2. Navigate to Publications collection
+3. Paste BibTeX entries into the import textarea
+4. Click "Parse BibTeX" to preview entries
+5. Edit parsed entries if needed, then click "Add to Publications"
+
+**Supporting utility:** `src/lib/utils/bibtexParser.ts` provides TypeScript functions for BibTeX parsing (used in the widget and available for programmatic imports).
+
 ### Manual Data Editing
 
 If you prefer to bypass the CMS:
@@ -232,14 +322,15 @@ If you prefer to bypass the CMS:
 ## Key Development Notes
 
 1. **TypeScript is strict** - All files use strict type checking. Ensure proper typing for new components.
-2. **Dark mode is integrated** - Use `dark:` Tailwind classes for dark mode support. Always test both light and dark themes.
-3. **Mobile responsive** - The Navbar has a mobile menu. Test at breakpoints (md: 768px, etc.).
-4. **Animations** - Framer Motion is used for Navbar mobile menu and page transitions. See `Navbar.tsx:63-67` for spring animation patterns.
-5. **Icons** - lucide-react icons are available. See `Navbar.tsx:25` for usage example.
-6. **Context for breadcrumbs** - All page-level components should use `useBreadcrumb()` to set breadcrumbs on mount. Home page sets empty array to hide breadcrumbs.
-7. **Dynamic data loading** - Components must fetch data from JSON via `src/lib/dataLoader.ts`. Never import static data files directly.
-8. **Data caching** - The dataLoader automatically caches fetched data. For development, hard-refresh the browser to see JSON changes.
-9. **Decap CMS** - Non-technical users should use `/admin/` for content updates. Developers can edit JSON files directly for quick testing.
+2. **Tailwind CSS v4** - Theme customization goes in `src/index.css` using `@theme {}` directive, not a separate config file.
+3. **Dark mode** - Use `dark:` Tailwind classes. The `<html>` element toggles between `class="light"` and `class="dark"`.
+4. **Mobile responsive** - The Navbar has a mobile menu. Test at breakpoints (md: 768px, etc.).
+5. **Animations** - Framer Motion is used for Navbar mobile menu and page transitions.
+6. **Icons** - Use `lucide-react` for most UI icons. Material Symbols are also available via `<span class="material-symbols-outlined">icon_name</span>`.
+7. **Context for breadcrumbs** - All page-level components should use `useBreadcrumb()` to set breadcrumbs on mount. Home page sets empty array to hide breadcrumbs.
+8. **Dynamic data loading** - Components must fetch data from JSON via `src/lib/dataLoader.ts`. Never import static data files directly.
+9. **Data caching** - The dataLoader automatically caches fetched data. For development, hard-refresh the browser to see JSON changes.
+10. **Decap CMS** - Non-technical users should use `/admin/` for content updates. Developers can edit JSON files directly for quick testing.
 
 ## Image Management
 
