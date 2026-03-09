@@ -285,9 +285,11 @@
       // Sort by year descending
       newValue.sort((a, b) => b.year - a.year);
 
-      console.log('handleAddToList - newValue to save:', newValue);
+      // Deep clone to ensure CMS detects the change (removes any reactive proxies)
+      const cleanValue = JSON.parse(JSON.stringify(newValue));
+      console.log('handleAddToList - cleanValue to save:', cleanValue);
 
-      this.props.onChange(newValue);
+      this.props.onChange(cleanValue);
 
       // Show success message
       this.setState({
@@ -315,7 +317,8 @@
         }
         return yearGroup;
       }).filter(yearGroup => yearGroup.papers && yearGroup.papers.length > 0);
-      this.props.onChange(newValue);
+      // Deep clone to ensure CMS detects the change
+      this.props.onChange(JSON.parse(JSON.stringify(newValue)));
     },
 
     // Edit existing entry
@@ -333,7 +336,8 @@
         }
         return yearGroup;
       });
-      this.props.onChange(newValue);
+      // Deep clone to ensure CMS detects the change
+      this.props.onChange(JSON.parse(JSON.stringify(newValue)));
     },
 
     renderExistingPublications(styles) {
