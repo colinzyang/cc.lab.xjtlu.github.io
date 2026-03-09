@@ -174,6 +174,9 @@
 
   // Create the custom widget control component
   const BibTeXControl = createClass({
+    // Provide default value for the widget
+    defaultValue: [],
+
     getInitialState() {
       return {
         bibtexInput: '',
@@ -320,8 +323,32 @@
     },
 
     renderExistingPublications(styles) {
-      const value = this.props.value || [];
+      // Safely get value, ensuring it's always an array
+      let value = this.props.value;
+
+      // Debug: log the received value
+      console.log('BibTeX Widget - raw props.value:', this.props.value);
+      console.log('BibTeX Widget - value type:', typeof this.props.value);
+
+      // Handle various value formats
+      if (!value) {
+        value = [];
+      } else if (!Array.isArray(value)) {
+        // If value is not an array, it might be an object with publications key
+        if (value.publications && Array.isArray(value.publications)) {
+          value = value.publications;
+        } else {
+          console.warn('BibTeX Widget - unexpected value format:', value);
+          value = [];
+        }
+      }
+
+      console.log('BibTeX Widget - processed value:', value);
+
       const totalPapers = value.reduce((sum, yg) => sum + (yg.papers ? yg.papers.length : 0), 0);
+
+      // Debug: log total papers count
+      console.log('BibTeX Widget - totalPapers:', totalPapers);
 
       if (totalPapers === 0) {
         return h('div', null,
@@ -702,7 +729,10 @@
   // Register the widget - must wait for CMS to be fully ready
   function registerBibTeXWidget() {
     if (window.CMS && window.createClass && window.h) {
-      CMS.registerWidget('bibtex-import', BibTeXControl, BibTeXPreview);
+      // Register with schema to ensure proper value handling
+      CMS.registerWidget('bibtex-import', BibTeXControl, BibTeXPreview, {
+        default: [],
+      });
       console.log('BibTeX widget registered successfully');
     } else {
       // Retry after a short delay
