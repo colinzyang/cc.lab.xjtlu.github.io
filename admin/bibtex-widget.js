@@ -553,15 +553,21 @@
     },
   });
 
-  // Register the widget
-  if (window.CMS) {
-    CMS.registerWidget('bibtex-import', BibTeXControl, BibTeXPreview);
+  // Register the widget - must wait for CMS to be fully ready
+  function registerBibTeXWidget() {
+    if (window.CMS && window.createClass && window.h) {
+      CMS.registerWidget('bibtex-import', BibTeXControl, BibTeXPreview);
+      console.log('BibTeX widget registered successfully');
+    } else {
+      // Retry after a short delay
+      setTimeout(registerBibTeXWidget, 100);
+    }
+  }
+
+  // Start registration process
+  if (document.readyState === 'complete') {
+    registerBibTeXWidget();
   } else {
-    // Wait for CMS to be available
-    window.addEventListener('load', function() {
-      if (window.CMS) {
-        CMS.registerWidget('bibtex-import', BibTeXControl, BibTeXPreview);
-      }
-    });
+    window.addEventListener('load', registerBibTeXWidget);
   }
 })();

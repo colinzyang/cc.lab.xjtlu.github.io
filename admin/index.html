@@ -14,8 +14,26 @@
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <!-- BibTeX parsing library for the import widget -->
     <script src="https://cdn.jsdelivr.net/npm/bibtex-parse-js@0.0.24/bibtexParse.js"></script>
-    <!-- Custom BibTeX import widget -->
-    <script src="/admin/bibtex-widget.js"></script>
+    <!-- Custom BibTeX import widget - loaded after CMS is ready -->
+    <script>
+      // Wait for CMS to be fully initialized before loading custom widget
+      if (window.CMS) {
+        var script = document.createElement('script');
+        script.src = '/admin/bibtex-widget.js';
+        document.body.appendChild(script);
+      } else {
+        window.addEventListener('DOMContentLoaded', function() {
+          var checkCMS = setInterval(function() {
+            if (window.CMS) {
+              clearInterval(checkCMS);
+              var script = document.createElement('script');
+              script.src = '/admin/bibtex-widget.js';
+              document.body.appendChild(script);
+            }
+          }, 50);
+        });
+      }
+    </script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
