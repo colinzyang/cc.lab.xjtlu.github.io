@@ -6,6 +6,8 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5.2-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-38B2AC?logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Netlify](https://img.shields.io/badge/Deployed_on-Netlify-00C7B7?logo=netlify&logoColor=white)
 
 **Structural Bioinformatics & Molecular Dynamics Laboratory**
 
@@ -21,13 +23,13 @@
 
 CC Lab is the official website for the **Structural Bioinformatics & Molecular Dynamics Laboratory** at Xi'an Jiaotong-Liverpool University. The lab combines structural bioinformatics, molecular dynamics simulations, and machine learning methods to investigate protein structure-function relationships and develop computational tools for drug discovery.
 
-This website showcases the lab's research, team members, publications, and news — built with a modern tech stack and deployed automatically to GitHub Pages.
+This website showcases the lab's research, team members, publications, and news — built with a modern tech stack and deployed automatically to Netlify.
 
 ### Key Features
 
 | Feature | Description |
 |---------|-------------|
-| **Static Hosting** | Deployed on GitHub Pages — fast, reliable, no backend required |
+| **Static Hosting** | Deployed on Netlify — fast, reliable, with continuous deployment |
 | **Content Management** | Decap CMS integration for non-technical content editing |
 | **Responsive Design** | Mobile-first layout with dark mode support |
 | **Dynamic Data** | JSON-based content with version control and easy updates |
@@ -160,20 +162,23 @@ Edit JSON files directly in `public/data/`. Hard-refresh the browser (Cmd+Shift+
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages via GitHub Actions when pushing to the `main` branch.
+The site is automatically deployed to [Netlify](https://www.netlify.com/) when pushing to the `main` branch.
 
-### Workflow
+### Configuration
 
-```mermaid
-graph LR
-    A[Push to main] --> B[Checkout]
-    B --> C[Setup Node.js 18]
-    C --> D[npm install]
-    D --> E[npm run build]
-    E --> F[Deploy to GitHub Pages]
-```
+Build settings are defined in `netlify.toml`:
+- **Build command:** `npm run build`
+- **Publish directory:** `dist/`
+- **SPA routing:** Redirects all routes to `index.html`
 
-No manual deployment required — just commit and push!
+### Deploy to Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start)
+
+Or manually:
+1. Connect your GitHub repository to Netlify
+2. Build settings will be auto-detected from `netlify.toml`
+3. Push to main branch to trigger deployment
 
 ---
 
@@ -226,7 +231,7 @@ For detailed guidelines, see [CLAUDE.md](./CLAUDE.md).
 
 ## License
 
-This project is provided as-is for the CC Lab at XJTLU.
+This project is open-sourced under the [MIT License](./LICENSE).
 
 ---
 
