@@ -22,7 +22,7 @@ CC Lab is a research lab website for Structural Bioinformatics & Molecular Dynam
 
 **React Router v6 with HashRouter** (`App.tsx:2`) - required for static hosting without server-side routing.
 
-Routes: `/` (Home), `/member`, `/publication`, `/resources`, `/news`, `/contact`. Catch-all redirects to home.
+Routes: `/` (Home), `/member`, `/research`, `/publication`, `/resources`, `/news`, `/contact`. Catch-all redirects to home.
 
 **Base URL:** `/` in `vite.config.ts`. For subdirectory deployment, update `base`.
 
@@ -69,6 +69,8 @@ useEffect(() => {
 **Types:** `Member`, `Publication`, `NewsItem`, `ContactInfo`, `LabInfo` exported from `dataLoader.ts`.
 
 **Hard-refresh browser** (Cmd+Shift+R) to see JSON changes during dev (caching).
+
+**Content patterns:** Some pages load from JSON (Member, Publication, News), while others have hardcoded content (Research, Resources, Contact). Choose based on whether content needs CMS editing.
 
 ### Context
 

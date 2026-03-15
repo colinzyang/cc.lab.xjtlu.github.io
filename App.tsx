@@ -6,6 +6,7 @@ import { Breadcrumb } from './components/Breadcrumb';
 import { BreadcrumbProvider, useBreadcrumb } from './src/context/BreadcrumbContext';
 import { Home } from './components/Home';
 import { Member } from './components/Member';
+import { Research } from './components/Research';
 import { Publication } from './components/Publication';
 import { Resources } from './components/Resources';
 import { News } from './components/News';
@@ -39,6 +40,7 @@ const MainContent = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/member" element={<Member />} />
+        <Route path="/research" element={<Research />} />
         <Route path="/publication" element={<Publication />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/news" element={<News />} />
