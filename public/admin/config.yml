@@ -15,9 +15,9 @@ public_folder: "/assets/images" # 媒体文件的公共访问路径
 
 # 集合配置
 collections:
-  # 团队成员集合
+    # 团队成员集合
   - name: "members"
-    label: "Team Members"
+    label: "Member"
     identifier_field: "id"
     editor:
       preview: false
@@ -90,7 +90,7 @@ collections:
 
   # 新闻集合
   - name: "news"
-    label: "News & Events"
+    label: "News"
     identifier_field: "date"
     editor:
       preview: false
@@ -110,12 +110,12 @@ collections:
 
   # 实验室信息集合
   - name: "labInfo"
-    label: "Lab Information"
+    label: "Contact"
     identifier_field: "id"
     editor:
       preview: false
     files:
-      - label: "Lab Info & Contact"
+      - label: "Contact & Lab Info"
         name: "labInfo"
         file: "public/data/labInfo.json"
         fields:
