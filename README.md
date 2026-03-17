@@ -295,4 +295,4 @@ This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUC
 - **Principal Investigator:** Kevin Chan
 - **Email:** [Chun.Chan@xjtlu.edu.cn](mailto:Chun.Chan@xjtlu.edu.cn)
 - **School:** School of Science, Center for Intelligent RNA Therapeutics
-- **Website:** [https://cc-lab-xjtlu.netlify.app](https://cc-lab-xjtlu.netlify.app)
+- **Website:** [https://cclabweb.netlify.app](https://cclabweb.netlify.app/)
