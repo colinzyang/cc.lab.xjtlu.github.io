@@ -20,7 +20,7 @@ CC Lab is a research lab website for Structural Bioinformatics & Molecular Dynam
 
 ### Routing
 
-**React Router v6 with HashRouter** (`App.tsx:2`) - required for static hosting without server-side routing.
+**React Router v6 with HashRouter** (`App.tsx`) - required for static hosting without server-side routing.
 
 Routes: `/` (Home), `/member`, `/research`, `/publication`, `/resources`, `/news`, `/contact`. Catch-all redirects to home.
 
@@ -52,25 +52,38 @@ Routes: `/` (Home), `/member`, `/research`, `/publication`, `/resources`, `/news
 - `publications.json` - Papers grouped by year (`{ publications: [{ year, papers: [...] }] }`)
 - `news.json` - News items
 - `labInfo.json` - Lab metadata and contact info
+- `research.json` - Research directions and projects
+- `resources.json` - Tools and software
 
-**Data loading:** `src/lib/dataLoader.ts` provides typed loaders with caching:
+**Data loading:** `src/lib/dataLoader.ts` provides typed loaders with caching. Use it via useEffect:
 ```typescript
-const [members, setMembers] = useState<Member[]>([]);
+const [data, setData] = useState<ResearchData | null>(null);
 const [loading, setLoading] = useState(true);
 
 useEffect(() => {
-  loadMembers().then(data => {
-    setMembers(data.MEMBERS);
-    setLoading(false);
-  });
+  loadResearch()
+    .then(setData)
+    .catch(console.error)
+    .finally(() => setLoading(false));
 }, []);
 ```
 
-**Types:** `Member`, `Publication`, `NewsItem`, `ContactInfo`, `LabInfo` exported from `dataLoader.ts`.
+**Preloading:** `App.tsx` calls `preloadAllData()` on mount to cache all JSON files upfront for faster page transitions.
+
+**Types:** `Member`, `Publication`, `NewsItem`, `ContactInfo`, `LabInfo`, `IconName`, `ResearchDirection`, `ResearchProject`, `ResearchData`, `ResourceTool`, `ResourcesData` exported from `dataLoader.ts`.
 
 **Hard-refresh browser** (Cmd+Shift+R) to see JSON changes during dev (caching).
 
-**Content patterns:** Some pages load from JSON (Member, Publication, News), while others have hardcoded content (Research, Resources, Contact). Choose based on whether content needs CMS editing.
+### Icons
+
+Icons are stored as strings in JSON (`"Brain"`, `"Dna"`, `"Pill"`, `"Lightbulb"`, `"Github"`, `"Database"`, `"Terminal"`) and mapped to lucide-react components:
+```typescript
+const iconMap: Record<IconName, LucideIcon> = { Brain, Dna, Pill, Lightbulb, Github, Database, Terminal };
+const getIcon = (name: IconName) => {
+  const Icon = iconMap[name] || Brain;
+  return <Icon className="w-6 h-6" />;
+};
+```
 
 ### Context
 
@@ -94,7 +107,7 @@ Live site: https://cc-lab-xjtlu.netlify.app
 
 ## Content Management (Decap CMS)
 
-Access at `/admin/` to manage content visually. Collections: Members, Publications, News, Lab Info.
+Access at `/admin/` to manage content visually. Collections: Members, Publications, News, Lab Info, Research, Resources & Software.
 
 **Config:** `public/admin/config.yml`
 
