@@ -58,6 +58,44 @@ export interface LabInfo {
   }>;
 }
 
+export type IconName = 'Brain' | 'Dna' | 'Pill' | 'Lightbulb' | 'Github' | 'Database' | 'Terminal';
+
+export interface ResearchDirection {
+  id: string;
+  title: string;
+  question: string;
+  description: string;
+  keyAreas: string[];
+  icon: IconName;
+}
+
+export interface ResearchProject {
+  id: string;
+  title: string;
+  description: string;
+  icon: IconName;
+}
+
+export interface ResearchData {
+  intro: string;
+  directions: ResearchDirection[];
+  projects: ResearchProject[];
+}
+
+export interface ResourceTool {
+  id: string;
+  name: string;
+  description: string;
+  icon: IconName;
+  tags: string[];
+  link: string;
+}
+
+export interface ResourcesData {
+  intro: string;
+  tools: ResourceTool[];
+}
+
 // Data caching to avoid repeated fetches
 const cache: Record<string, any> = {};
 
@@ -118,6 +156,14 @@ export async function loadLabInfo() {
   };
 }
 
+export async function loadResearch(): Promise<ResearchData> {
+  return loadJSON<ResearchData>('/data/research.json');
+}
+
+export async function loadResources(): Promise<ResourcesData> {
+  return loadJSON<ResourcesData>('/data/resources.json');
+}
+
 // Preload all data for better performance
 export async function preloadAllData() {
   try {
@@ -125,7 +171,9 @@ export async function preloadAllData() {
       loadMembers(),
       loadPublications(),
       loadNews(),
-      loadLabInfo()
+      loadLabInfo(),
+      loadResearch(),
+      loadResources()
     ]);
   } catch (error) {
     console.error('Error preloading data:', error);

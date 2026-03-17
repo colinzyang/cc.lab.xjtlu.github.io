@@ -143,3 +143,70 @@ collections:
                 fields:
                   - {label: "Center Name", name: "name", widget: "string"}
                   - {label: "Center URL", name: "url", widget: "string"}
+
+  # 研究方向集合
+  - name: "research"
+    label: "Research"
+    editor:
+      preview: false
+    files:
+      - label: "Research Content"
+        name: "research"
+        file: "public/data/research.json"
+        fields:
+          - {label: "Introduction", name: "intro", widget: "text"}
+          - label: "Research Directions"
+            name: "directions"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Research Question", name: "question", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Key Areas"
+                name: "keyAreas"
+                widget: "list"
+                field: {label: "Area", name: "area", widget: "string"}
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["Brain", "Dna", "Pill", "Lightbulb", "Github", "Database", "Terminal"]
+          - label: "Current Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["Brain", "Dna", "Pill", "Lightbulb", "Github", "Database", "Terminal"]
+
+  # 资源集合
+  - name: "resources"
+    label: "Resources & Software"
+    editor:
+      preview: false
+    files:
+      - label: "Resources Content"
+        name: "resources"
+        file: "public/data/resources.json"
+        fields:
+          - {label: "Introduction", name: "intro", widget: "string"}
+          - label: "Tools & Software"
+            name: "tools"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["Brain", "Dna", "Pill", "Lightbulb", "Github", "Database", "Terminal"]
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                field: {label: "Tag", name: "tag", widget: "string"}
+              - {label: "Link URL", name: "link", widget: "string"}

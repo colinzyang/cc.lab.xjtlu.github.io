@@ -1,0 +1,29 @@
+{
+  "intro": "Software, datasets, and other resources from our lab.",
+  "tools": [
+    {
+      "id": "foldpred-x",
+      "name": "FoldPred-X Placeholder",
+      "description": "A state-of-the-art deep learning tool for predicting protein folding pathways in milliseconds.",
+      "icon": "Terminal",
+      "tags": ["Python", "PyTorch", "CLI"],
+      "link": "#"
+    },
+    {
+      "id": "biodyn-db",
+      "name": "BioDyn-DB Placeholder",
+      "description": "Comprehensive database of molecular dynamics trajectories for G-protein coupled receptors.",
+      "icon": "Database",
+      "tags": ["Database", "Web Access"],
+      "link": "#"
+    },
+    {
+      "id": "seqalign-gpu",
+      "name": "SeqAlign-GPU Placeholder",
+      "description": "GPU-accelerated sequence alignment library specifically optimized for long-read sequencing data.",
+      "icon": "Github",
+      "tags": ["C++", "CUDA", "Open Source"],
+      "link": "#"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "intro": "Our lab focuses on developing computational methods to understand complex biological systems. We combine machine learning, molecular modeling, and experimental validation to tackle challenging problems in biology and medicine.",
+  "directions": [
+    {
+      "id": "ml-biology",
+      "title": "Machine Learning for Biology",
+      "question": "How can we develop new machine learning methods tailored for biological data?",
+      "description": "We develop deep learning architectures and algorithms specifically designed for biological sequences, structures, and networks. Our methods handle the unique challenges of biological data including noise, missing values, and complex dependencies.",
+      "keyAreas": ["Generative models for molecular design", "Interpretable AI for biological insights"],
+      "icon": "Brain"
+    },
+    {
+      "id": "precision-medicine",
+      "title": "Precision Medicine",
+      "question": "How can we personalize treatments based on individual molecular profiles?",
+      "description": "We combine genomic, structural and molecular biology, and clinical data to predict treatment responses for patient stratification.",
+      "keyAreas": ["Treatment response prediction", "Clinical decision support"],
+      "icon": "Dna"
+    }
+  ],
+  "projects": [
+    {
+      "id": "drug-discovery",
+      "title": "Deep Learning for Drug Discovery",
+      "description": "We're developing new deep learning models that can predict drug-target interactions and optimize molecular properties.",
+      "icon": "Pill"
+    },
+    {
+      "id": "interpretable-ai",
+      "title": "Interpretable AI for Biology",
+      "description": "We're working on making predictive and generative models more interpretable for biological applications, allowing researchers to understand not just predictions but also the biological mechanisms behind them.",
+      "icon": "Lightbulb"
+    }
+  ]
+}
