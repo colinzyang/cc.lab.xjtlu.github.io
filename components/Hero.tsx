@@ -57,9 +57,9 @@ export const Hero: React.FC = () => {
           className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-[-0.04em] leading-[0.9] text-slate-900 dark:text-white uppercase break-words"
           variants={itemVariants}
         >
-          Structural<br />
-          Bioinformatics<br />
-          & Dynamics
+          Computation.<br />
+          Structure.<br />
+          Discovery.
         </motion.h1>
 
         <motion.div
@@ -83,7 +83,7 @@ export const Hero: React.FC = () => {
               to="/publication"
               className="group flex items-center gap-3 text-primary font-bold text-lg tracking-tight hover:text-[#003366] transition-all"
             >
-              Explore Research
+              View Publications
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-2" />
             </Link>
           </motion.div>
