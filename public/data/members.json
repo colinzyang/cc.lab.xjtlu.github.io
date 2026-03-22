@@ -21,7 +21,7 @@
       "title": "PhD Student",
       "image": "/assets/images/people/Vivian_XIA.jpg",
       "bio_long": "Vivian is CC Lab's first PhD student. She completed her undergraduate degree at XJTLU and her Master's at Columbia University before returning to pursue her PhD. She works on representation learning for biomolecules.",
-      "interest": "Representation Learning for Biomolecules",
+      "interest": "",
       "type": "member"
     },
     {
@@ -226,5 +226,42 @@
       "type": "member"
     }
   ],
-  "alumni": []
+  "alumni": [
+    {
+      "id": "jinghan_liu",
+      "name": "Jinghan Liu",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2025",
+      "image": "",
+      "type": "alumn",
+      "current_position": "MSc Student, Imperial College London"
+    },
+    {
+      "id": "yanan_feng",
+      "name": "Yanan Feng",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2025",
+      "image": "",
+      "type": "alumn",
+      "current_position": "MSc Student, University of Bristol"
+    },
+    {
+      "id": "yikai_wang",
+      "name": "Yikai Wang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2025",
+      "image": "",
+      "type": "alumn",
+      "current_position": "MSc Student, National University of Singapore"
+    },
+    {
+      "id": "xingyu_hu",
+      "name": "Xingyu Hu",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2024",
+      "image": "",
+      "type": "alumn",
+      "current_position": "MSc Student, Carnegie Mellon University"
+    }
+  ]
 }
