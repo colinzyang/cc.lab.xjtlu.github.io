@@ -1,35 +1,53 @@
 {
-  "intro": "Our lab focuses on developing computational methods to understand complex biological systems. We combine machine learning, molecular modeling, and experimental validation to tackle challenging problems in biology and medicine.",
+  "intro": "We bridge rigorous computational biophysics with state-of-the-art biological foundation models to understand and engineer biological systems at atomic resolution. Our work spans fundamental questions in structural biology to translational applications in precision medicine, immunotherapy, and drug discovery - creating the science that connects academic excellence with real-world impact.",
   "directions": [
     {
-      "id": "ml-biology",
-      "title": "Machine Learning for Biology",
-      "question": "How can we develop new machine learning methods tailored for biological data?",
-      "description": "We develop deep learning architectures and algorithms specifically designed for biological sequences, structures, and networks. Our methods handle the unique challenges of biological data including noise, missing values, and complex dependencies.",
-      "keyAreas": ["Generative models for molecular design", "Interpretable AI for biological insights"],
+      "id": "structural-bioinformatics-foundation-models",
+      "title": "Structural Bioinformatics & Foundation Models",
+      "question": "How can we decode the language of protein structure and function at scale?",
+      "description": "We develop and apply large-scale foundation models trained on protein sequences, structures, and evolutionary data to understand molecular function, predict structural dynamics, and generate novel biomolecules. By integrating deep learning with physics-based reasoning, we push the boundaries of what computational approaches can reveal about life at the atomic scale.",
+      "keyAreas": [
+        "Protein structure & function prediction",
+        "Biological sequence foundation models",
+        "Structure-informed generative design"
+      ],
       "icon": "Brain"
     },
     {
-      "id": "precision-medicine",
-      "title": "Precision Medicine",
-      "question": "How can we personalize treatments based on individual molecular profiles?",
-      "description": "We combine genomic, structural and molecular biology, and clinical data to predict treatment responses for patient stratification.",
-      "keyAreas": ["Treatment response prediction", "Clinical decision support"],
-      "icon": "Dna"
-    }
-  ],
-  "projects": [
-    {
-      "id": "drug-discovery",
-      "title": "Deep Learning for Drug Discovery",
-      "description": "We're developing new deep learning models that can predict drug-target interactions and optimize molecular properties.",
-      "icon": "Pill"
+      "id": "computational-biophysics-molecular-dynamics",
+      "title": "Computational Biophysics & Molecular Dynamics",
+      "question": "How do molecular motions govern biological function and drug action?",
+      "description": "We use molecular dynamics simulations, enhanced sampling methods, and free energy calculations to characterize protein conformational landscapes, allosteric mechanisms, and ligand binding thermodynamics.",
+      "keyAreas": [
+        "MD simulation & enhanced sampling",
+        "Allostery & conformational dynamics",
+        "Binding free energy calculations"
+      ],
+      "icon": "Database"
     },
     {
-      "id": "interpretable-ai",
-      "title": "Interpretable AI for Biology",
-      "description": "We're working on making predictive and generative models more interpretable for biological applications, allowing researchers to understand not just predictions but also the biological mechanisms behind them.",
-      "icon": "Lightbulb"
+      "id": "precision-medicine-immunotherapy",
+      "title": "Precision Medicine & Immunotherapy",
+      "question": "How can we tailor therapies to individual molecular and genomic profiles?",
+      "description": "We integrate multi-omics data with structural and molecular insights to identify patient-specific vulnerabilities, predict treatment response, and accelerate the design of personalized vaccines and immunotherapies - including neoantigen identification and mRNA vaccine optimization.",
+      "keyAreas": [
+        "Neoantigen prediction & vaccine design",
+        "Treatment response & patient stratification",
+        "mRNA therapeutics optimization"
+      ],
+      "icon": "Dna"
+    },
+    {
+      "id": "dynamics-based-drug-discovery",
+      "title": "Dynamics-Based Drug Discovery",
+      "question": "How can we exploit protein dynamics and targeted protein degradation to find next-generation therapeutics?",
+      "description": "We apply dynamics-driven computational strategies - including cryptic pocket detection, induced-fit docking, and PROTAC/molecular glue design - to identify and optimize small molecules that modulate challenging targets, including intrinsically disordered proteins and protein–protein interfaces.",
+      "keyAreas": [
+        "Cryptic pocket & allosteric drug discovery",
+        "Molecular glues & targeted protein degradation",
+        "PROTAC and bifunctional molecule design"
+      ],
+      "icon": "Pill"
     }
   ]
 }

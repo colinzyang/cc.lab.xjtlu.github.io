@@ -79,7 +79,7 @@ export interface ResearchProject {
 export interface ResearchData {
   intro: string;
   directions: ResearchDirection[];
-  projects: ResearchProject[];
+  projects?: ResearchProject[];
 }
 
 export interface ResourceTool {
