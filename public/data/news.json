@@ -1,34 +1,64 @@
 {
   "items": [
     {
-      "date": "January 2024",
-      "title": "CC Lab Officially Established at XJTLU",
+      "date": "March 2026",
+      "title": "MSc Student Chen Chu Presenting at XJTLU/XJTU/Liverpool Joint Symposium",
+      "category": "Conference",
+      "excerpt": "Chen Chu presents her poster research about bacterial secretion system at the joint symposium bringing together students and faculty from XJTLU, Xi'an Jiaotong University, and the University of Liverpool."
+    },
+    {
+      "date": "March 2026",
+      "title": "Two SURF Projects Launching This Summer on Agentic Bioinformatics",
+      "category": "Research",
+      "excerpt": "CC Lab will host two Summer Undergraduate Research Fellowship (SURF) projects focused on agentic AI workflows for bioinformatics - applications open soon."
+    },
+    {
+      "date": "January 2026",
+      "title": "Welcome Vivian Xia - Our First PhD Student",
       "category": "Lab News",
-      "excerpt": "Dr. Kevin Chan joins XJTLU as Assistant Professor and establishes the CC Lab focusing on structural bioinformatics and molecular dynamics."
+      "excerpt": "Vivian Xia joins CC Lab as our first PhD student. A proud XJTLU alumna who went on to complete her Master's at Columbia University, she returns to work on representation learning for biomolecules."
+    },
+    {
+      "date": "January 2026",
+      "title": "PG Research Scholarship Awarded for New PhD Recruitment",
+      "category": "Funding",
+      "excerpt": "CC Lab has been awarded a Postgraduate Research Scholarship (PGRS), opening a new funded PhD position in computational biology and drug discovery."
+    },
+    {
+      "date": "November 2025",
+      "title": "Industrial Grant Secured from SIP BioBay for Next-Generation Immunotherapy",
+      "category": "Funding",
+      "excerpt": "CC Lab receives a major grant from a Suzhou Industrial Park (SIP) BioBay industrial partner to advance computational design of next-generation immunotherapies."
+    },
+    {
+      "date": "January 2026",
+      "title": "New Paper in Scientific Reports: Neoantigen Vaccine Maturation",
+      "category": "Publication",
+      "excerpt": "Multi-strategy embedded framework for neoantigen vaccine maturation - integrating computational design with immunogenicity optimization for personalized cancer vaccines."
+    },
+    {
+      "date": "July 2025",
+      "title": "New Paper in Briefings in Bioinformatics: FEP-Assisted ML for Vaccine Design",
+      "category": "Publication",
+      "excerpt": "Free energy perturbation-assisted machine learning strategy for mimotope screening in neoantigen-based vaccine design, combining physics-based and data-driven approaches."
+    },
+    {
+      "date": "April 2025",
+      "title": "New Paper in PNAS: Computational Genomics of Parasitoid Wasps",
+      "category": "Publication",
+      "excerpt": "Genomic signatures associated with the evolutionary loss of egg yolk in parasitoid wasps - a cross-disciplinary computational genomics study published in PNAS."
+    },
+    {
+      "date": "May 2023",
+      "title": "Paper Published in Nature: BAM-Mediated Membrane Protein Assembly",
+      "category": "Publication",
+      "excerpt": "Structural basis of BAM-mediated outer membrane β-barrel protein assembly, revealing the molecular mechanism of a fundamental biological process at atomic resolution."
     },
     {
       "date": "January 2024",
-      "title": "Deep Learning Paper Published in Nature Machine Intelligence",
-      "category": "Publication",
-      "excerpt": "Our comprehensive review on deep learning for drug-target interaction prediction is now published."
-    },
-    {
-      "date": "December 2023",
-      "title": "Single-Cell RNA Sequencing Study in Cell",
-      "category": "Publication",
-      "excerpt": "New research reveals novel cell types in disease using advanced sequencing techniques."
-    },
-    {
-      "date": "November 2023",
-      "title": "Graph Neural Networks Research Published",
-      "category": "Publication",
-      "excerpt": "Our work on molecular property prediction using graph neural networks appears in JCIM."
-    },
-    {
-      "date": "October 2023",
-      "title": "Nature Methods Publishes ML Genomics Study",
-      "category": "Publication",
-      "excerpt": "Research on interpretable machine learning approaches for genomics analysis now available."
+      "title": "CC Lab Established at XJTLU",
+      "category": "Lab News",
+      "excerpt": "Dr. Kevin Chan joins XJTLU as Assistant Professor, establishing CC Lab at the intersection of structural bioinformatics, molecular dynamics, and biological foundation models."
     }
   ]
 }

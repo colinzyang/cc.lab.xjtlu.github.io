@@ -58,9 +58,14 @@ export const News: React.FC = () => {
             <span className="text-xs font-mono text-primary uppercase tracking-wider mb-1 block">
               {item.category} • {item.date}
             </span>
-            <h3 className="text-2xl font-medium text-slate-900 dark:text-white hover:text-primary cursor-pointer transition-colors">
+            <h3 className="text-2xl font-medium text-slate-900 dark:text-white mb-3">
               {item.title}
             </h3>
+            {item.excerpt && (
+              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
+                {item.excerpt}
+              </p>
+            )}
           </motion.div>
         ))}
       </div>
