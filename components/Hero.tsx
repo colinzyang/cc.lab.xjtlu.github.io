@@ -80,10 +80,10 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
           >
             <Link
-              to="/publication"
+              to="/research"
               className="group flex items-center gap-3 text-primary font-bold text-lg tracking-tight hover:text-[#003366] transition-all"
             >
-              View Publications
+              Explore Research
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-2" />
             </Link>
           </motion.div>
