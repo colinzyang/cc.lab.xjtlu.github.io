@@ -107,6 +107,14 @@ collections:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Category", name: "category", widget: "string"}
               - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: false
+                min: 1
+                max: 6
+                hint: "Add images to display in expandable drawer (max 6)"
+                field: {label: "Image", name: "src", widget: "image"}
 
   # 实验室信息集合
   - name: "labInfo"

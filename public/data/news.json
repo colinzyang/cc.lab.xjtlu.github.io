@@ -6,9 +6,9 @@
       "category": "Conference",
       "excerpt": "Chen Chu presents her poster research about bacterial secretion system at the joint symposium bringing together students and faculty from XJTLU, Xi'an Jiaotong University, and the University of Liverpool.",
       "images": [
-        "https://picsum.photos/seed/symposium1/800/600",
-        "https://picsum.photos/seed/symposium2/800/600",
-        "https://picsum.photos/seed/symposium3/800/600"
+        {"src": "https://picsum.photos/seed/symposium1/800/600"},
+        {"src": "https://picsum.photos/seed/symposium2/800/600"},
+        {"src": "https://picsum.photos/seed/symposium3/800/600"}
       ]
     },
     {
@@ -17,7 +17,7 @@
       "category": "Research",
       "excerpt": "CC Lab will host two Summer Undergraduate Research Fellowship (SURF) projects focused on agentic AI workflows for bioinformatics - applications open soon.",
       "images": [
-        "https://picsum.photos/seed/surf2026/800/600"
+        {"src": "https://picsum.photos/seed/surf2026/800/600"}
       ]
     },
     {

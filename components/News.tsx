@@ -107,19 +107,22 @@ export const News: React.FC = () => {
                 >
                   <div className="mt-4 pt-4 border-t border-gray-100 dark:border-border">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {item.images.map((img, imgIdx) => (
-                        <div
-                          key={imgIdx}
-                          className="aspect-video bg-gray-100 dark:bg-surface1 rounded-lg overflow-hidden"
-                        >
-                          <img
-                            src={img}
-                            alt={`${item.title} - image ${imgIdx + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        </div>
-                      ))}
+                      {item.images.map((img, imgIdx) => {
+                        const imgSrc = typeof img === 'string' ? img : img.src;
+                        return (
+                          <div
+                            key={imgIdx}
+                            className="aspect-video bg-gray-100 dark:bg-surface1 rounded-lg overflow-hidden"
+                          >
+                            <img
+                              src={imgSrc}
+                              alt={`${item.title} - image ${imgIdx + 1}`}
+                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </motion.div>
