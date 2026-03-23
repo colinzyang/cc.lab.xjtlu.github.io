@@ -57,9 +57,9 @@ export const Hero: React.FC = () => {
           className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-[-0.04em] leading-[0.9] text-slate-900 dark:text-white uppercase break-words"
           variants={itemVariants}
         >
-          Structural<br />
-          Bioinformatics<br />
-          & Dynamics
+          Computation.<br />
+          Structure.<br />
+          Discovery.
         </motion.h1>
 
         <motion.div
@@ -80,7 +80,7 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
           >
             <Link
-              to="/publication"
+              to="/research"
               className="group flex items-center gap-3 text-primary font-bold text-lg tracking-tight hover:text-[#003366] transition-all"
             >
               Explore Research

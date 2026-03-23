@@ -104,33 +104,6 @@ export const Research: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Current Projects Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Current Projects</h2>
-        <div className="flex flex-col gap-6">
-          {data.projects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + idx * 0.1 }}
-              className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-8 hover:border-primary/30 transition-colors group"
-            >
-              <div className="w-12 h-12 bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-                {getIcon(project.icon)}
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{project.title}</h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
-                {project.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
     </div>
   );
 };

@@ -1,251 +1,267 @@
 {
   "pi": {
-    "google_scholar": "rSZrshkAAAAJ&hl=en",
-    "github": "skblnw",
-    "interest": "Structural Bioinformatics, Molecular Dynamics, Machine Learning",
+    "id": "kevin_chan",
     "name": "Kevin Chan, PhD",
-    "bio_long": "Kevin is the Principal Investigator of the lab. He received his PhD from City University of Hong Kong (CityUHK) and completed postdoctoral training at The Ohio State University (OSU). His research focuses on developing computational methods for understanding complex biological systems. Before starting the lab, he worked in Zhejiang University (ZJU) developing machine learning algorithms for drug discovery. He joined the faculty in 2024. He is also a member of the Center for Intelligent RNA Therapeutics at XJTLU.",
     "role": "Principal Investigator",
     "title": "Assistant Professor; Principal Investigator",
-    "type": "member",
-    "id": "kevin_chan",
     "image": "/assets/images/people/cc.jpg",
+    "bio_long": "Kevin is the Principal Investigator of CC Lab. He received his PhD from City University of Hong Kong (CityUHK) and completed postdoctoral training at The Ohio State University (OSU). Before joining XJTLU in 2024, he was at Zhejiang University (ZJU) developing machine learning algorithms for drug discovery. His research spans structural bioinformatics, molecular dynamics, and biological foundation models. He is also a member of the Center for Intelligent RNA Therapeutics at XJTLU.",
+    "interest": "Structural Bioinformatics, Molecular Dynamics, Biological Foundation Models",
+    "email": "Chun.Chan@xjtlu.edu.cn",
+    "github": "skblnw",
+    "google_scholar": "rSZrshkAAAAJ&hl=en",
     "orcid": "0000-0002-3705-1835",
-    "email": "Chun.Chan@xjtlu.edu.cn"
+    "type": "member"
   },
   "members": [
     {
-      "interest": "Lab Operations, Computational Infrastructure",
-      "name": "Qiujie Zhu",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Qiujie_Zhu.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "aixue_wang",
-      "name": "Aixue Wang",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Aixue_Wang.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
+      "id": "vivian_xia",
+      "name": "Vivian Xia",
+      "role": "PhD Student",
+      "title": "PhD Student",
+      "image": "/assets/images/people/Vivian_XIA.jpg",
+      "bio_long": "Vivian is CC Lab's first PhD student. She completed her undergraduate degree at XJTLU and her Master's at Columbia University before returning to pursue her PhD. She works on representation learning for biomolecules.",
+      "interest": "",
       "type": "member"
     },
     {
       "id": "chen_chu",
       "name": "Chen Chu",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
+      "role": "MSc Student",
+      "title": "MSc Student",
       "image": "/assets/images/people/Chen_Chu.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "chenyu_bao",
-      "name": "Chenyu Bao",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Chenyu.Bao.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "jiahua_zhou",
-      "name": "Jiahua Zhou",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Jiahua_Zhou.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "longtian_li",
-      "name": "Longtian Li",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Longtian_Li.JPG",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "qianwen_yang",
-      "name": "Qianwen Yang",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Qianwen_Yang.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "shengyi_gu",
-      "name": "Shengyi Gu",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Shengyi_Gu.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "vivian_xia",
-      "name": "Vivian Xia",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Vivian_XIA.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "wenjingyi_liang",
-      "name": "Wenjingyi Liang",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Wenjingyi_Liang.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "wenqian_xu",
-      "name": "Wenqian Xu",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Wenqian_Xu.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "xiaohang_jiang",
-      "name": "Xiaohang Jiang",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Xiaohang_Jiang.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "xinyao_tan",
-      "name": "Xinyao Tan",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Xinyao_Tan.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yichen_tang",
-      "name": "Yichen Tang",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/yichen_tang.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yifan_wang",
-      "name": "Yifan Wang",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Yifan_Wang.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yifei_song",
-      "name": "Yifei Song",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Yifei_Song.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yihan_zhou",
-      "name": "Yihan Zhou",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/yihan_zhou.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yixin_qin",
-      "name": "Yixin Qin",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Yixin_Qin.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yiyi_qian",
-      "name": "Yiyi Qian",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Yiyi.Qian.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
-    },
-    {
-      "id": "yuchong_yan",
-      "name": "Yuchong Yan",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
-      "image": "/assets/images/people/Yuchong_Yan.png",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
+      "bio_long": "",
+      "interest": "",
       "type": "member"
     },
     {
       "id": "zixuan_guo",
       "name": "Zixuan Guo",
-      "role": "Lab Manager",
-      "title": "Lab Manager/Technician",
+      "role": "MSc Student",
+      "title": "MSc Student",
       "image": "/assets/images/people/Zixuan_Guo.jpg",
-      "bio_long": "Qiujie is our lab manager who joined the lab with an M.S. in Bioinformatics. She helps manage the lab's computational infrastructure and provides support to our lab members.",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "longtian_li",
+      "name": "Longtian Li",
+      "role": "MSc Student",
+      "title": "MSc Student",
+      "image": "/assets/images/people/Longtian_Li.JPG",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "wenjingyi_liang",
+      "name": "Wenjingyi Liang",
+      "role": "MSc Student",
+      "title": "MSc Student",
+      "image": "/assets/images/people/Wenjingyi_Liang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "aixue_wang",
+      "name": "Aixue Wang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Aixue_Wang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "jiahua_zhou",
+      "name": "Jiahua Zhou",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Jiahua_Zhou.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yuchong_yan",
+      "name": "Yuchong Yan",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Yuchong_Yan.png",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yixin_qin",
+      "name": "Yixin Qin",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Yixin_Qin.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "chenyu_bao",
+      "name": "Chenyu Bao",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Chenyu.Bao.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "qianwen_yang",
+      "name": "Qianwen Yang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Qianwen_Yang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "shengyi_gu",
+      "name": "Shengyi Gu",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Shengyi_Gu.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "wenqian_xu",
+      "name": "Wenqian Xu",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Wenqian_Xu.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "xiaohang_jiang",
+      "name": "Xiaohang Jiang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Xiaohang_Jiang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "xinyao_tan",
+      "name": "Xinyao Tan",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Xinyao_Tan.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yichen_tang",
+      "name": "Yichen Tang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/yichen_tang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yifan_wang",
+      "name": "Yifan Wang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Yifan_Wang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yifei_song",
+      "name": "Yifei Song",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Yifei_Song.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yihan_zhou",
+      "name": "Yihan Zhou",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/yihan_zhou.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "yiyi_qian",
+      "name": "Yiyi Qian",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher",
+      "image": "/assets/images/people/Yiyi.Qian.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "member"
+    },
+    {
+      "id": "qiujie_zhu",
+      "name": "Qiujie Zhu",
+      "role": "Lab Manager",
+      "title": "Lab Manager / Technician",
+      "image": "/assets/images/people/Qiujie_Zhu.jpg",
+      "bio_long": "Qiujie joined the lab with an M.S. in Bioinformatics. She manages the lab's day-to-day operations and computational infrastructure.",
       "interest": "Lab Operations, Computational Infrastructure",
       "email": "Qiujie.Zhu@xjtlu.edu.cn",
       "type": "member"
     }
   ],
-  "alumni": []
+  "alumni": [
+    {
+      "id": "jinghan_liu",
+      "name": "Jinghan Liu",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2025",
+      "image": "",
+      "type": "alumn",
+      "current_position": "Master, Imperial College London"
+    },
+    {
+      "id": "yanan_feng",
+      "name": "Yanan Feng",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2025",
+      "image": "",
+      "type": "alumn",
+      "current_position": "Master, University of Bristol"
+    },
+    {
+      "id": "yikai_wang",
+      "name": "Yikai Wang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2025",
+      "image": "",
+      "type": "alumn",
+      "current_position": "Master, National University of Singapore"
+    },
+    {
+      "id": "xingyu_hu",
+      "name": "Xingyu Hu",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP) 2024",
+      "image": "",
+      "type": "alumn",
+      "current_position": "Master, Carnegie Mellon University"
+    }
+  ]
 }
