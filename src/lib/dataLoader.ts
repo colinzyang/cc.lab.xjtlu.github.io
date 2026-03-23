@@ -37,6 +37,7 @@ export interface NewsItem {
   title: string;
   category: string;
   excerpt?: string;
+  images?: string[];
 }
 
 export interface ContactInfo {

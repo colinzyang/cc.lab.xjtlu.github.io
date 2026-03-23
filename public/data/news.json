@@ -4,13 +4,21 @@
       "date": "March 2026",
       "title": "MSc Student Chen Chu Presenting at XJTLU/XJTU/Liverpool Joint Symposium",
       "category": "Conference",
-      "excerpt": "Chen Chu presents her poster research about bacterial secretion system at the joint symposium bringing together students and faculty from XJTLU, Xi'an Jiaotong University, and the University of Liverpool."
+      "excerpt": "Chen Chu presents her poster research about bacterial secretion system at the joint symposium bringing together students and faculty from XJTLU, Xi'an Jiaotong University, and the University of Liverpool.",
+      "images": [
+        "https://picsum.photos/seed/symposium1/800/600",
+        "https://picsum.photos/seed/symposium2/800/600",
+        "https://picsum.photos/seed/symposium3/800/600"
+      ]
     },
     {
       "date": "March 2026",
       "title": "Two SURF Projects Launching This Summer on Agentic Bioinformatics",
       "category": "Research",
-      "excerpt": "CC Lab will host two Summer Undergraduate Research Fellowship (SURF) projects focused on agentic AI workflows for bioinformatics - applications open soon."
+      "excerpt": "CC Lab will host two Summer Undergraduate Research Fellowship (SURF) projects focused on agentic AI workflows for bioinformatics - applications open soon.",
+      "images": [
+        "https://picsum.photos/seed/surf2026/800/600"
+      ]
     },
     {
       "date": "January 2026",
