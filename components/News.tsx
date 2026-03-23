@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadNews, NewsItem } from '../src/lib/dataLoader';
 import { ChevronDown, ImageOff } from 'lucide-react';
+import { ScrollToTopButton } from './ScrollToTopButton';
 
 // Image component with error handling
 const NewsImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
@@ -150,6 +151,7 @@ export const News: React.FC = () => {
           </motion.div>
         ))}
       </div>
+      <ScrollToTopButton />
     </div>
   );
 };

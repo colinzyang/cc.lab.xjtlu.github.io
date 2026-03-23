@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Link as LinkIcon } from 'lucide-react';
+import { ScrollToTopButton } from './ScrollToTopButton';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadPublications } from '../src/lib/dataLoader';
 
@@ -92,6 +93,7 @@ export const Publication: React.FC = () => {
           </motion.div>
         ))}
       </div>
+      <ScrollToTopButton />
     </div>
   );
 };
