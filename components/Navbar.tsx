@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { name: 'Member', href: '/member' },
   { name: 'Research', href: '/research' },
   { name: 'Publication', href: '/publication' },
-  { name: 'Resources', href: '/resources' },
+  // { name: 'Resources', href: '/resources' }, // TODO: 暂时隐藏，待内容完善后恢复
   { name: 'News', href: '/news' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -19,12 +19,12 @@ export const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="w-full border-b border-gray-100 dark:border-gray-800 sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
+    <header className="w-full border-b border-gray-100 dark:border-border sticky top-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md z-50">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 h-20 flex items-center justify-between">
         {/* Logo Area */}
         <Link to="/" className="flex items-center gap-3 select-none cursor-pointer group">
-          <span className="material-symbols-outlined text-4xl text-primary group-hover:scale-110 transition-transform duration-300">hexagon</span>
-          <h2 className="text-slate-900 dark:text-white text-lg font-bold tracking-tight uppercase leading-none">
+          <span className="material-symbols-outlined text-4xl text-primary dark:text-primary-dark group-hover:scale-110 transition-transform duration-300">hexagon</span>
+          <h2 className="text-slate-900 dark:text-text text-lg font-bold tracking-tight uppercase leading-none">
             CC Lab
           </h2>
         </Link>
@@ -36,11 +36,11 @@ export const Navbar: React.FC = () => {
               key={link.name}
               to={link.href}
               className={`text-sm font-semibold transition-colors duration-200 relative group ${
-                isActive(link.href) ? 'text-primary' : 'text-slate-900 dark:text-white hover:text-primary'
+                isActive(link.href) ? 'text-primary dark:text-primary-dark' : 'text-slate-900 dark:text-text hover:text-primary dark:hover:text-primary-dark'
               }`}
             >
               {link.name}
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary dark:bg-primary-dark transition-all duration-300 ${
                 isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
               }`}></span>
             </Link>
@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-2 text-slate-900 dark:text-white hover:bg-gray-100 rounded-md transition-colors"
+            className="p-2 text-slate-900 dark:text-text hover:bg-gray-100 dark:hover:bg-surface rounded-md transition-colors"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
             <div className="flex justify-end mb-8">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-slate-900 dark:text-white hover:bg-gray-100 rounded-md"
+                className="p-2 text-slate-900 dark:text-text hover:bg-gray-100 dark:hover:bg-surface rounded-md"
               >
                 <X className="w-8 h-8" />
               </button>
@@ -93,7 +93,7 @@ export const Navbar: React.FC = () => {
                   key={link.name}
                   to={link.href}
                   className={`text-2xl font-semibold ${
-                    isActive(link.href) ? 'text-primary' : 'text-slate-900 dark:text-white hover:text-primary'
+                    isActive(link.href) ? 'text-primary dark:text-primary-dark' : 'text-slate-900 dark:text-text hover:text-primary dark:hover:text-primary-dark'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

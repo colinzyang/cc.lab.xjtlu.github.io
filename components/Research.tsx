@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Dna, Pill, Lightbulb, Github, Database, Terminal, LucideIcon } from 'lucide-react';
+import { Brain, Dna, Pill, Lightbulb, Github, Database, Terminal, LucideIcon, Target } from 'lucide-react';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadResearch, ResearchData, IconName } from '../src/lib/dataLoader';
 
@@ -60,8 +60,8 @@ export const Research: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="mb-16 text-center max-w-3xl mx-auto"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Research</h1>
-        <p className="text-xl text-slate-600 dark:text-gray-300">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">Research</h1>
+        <p className="text-xl text-slate-600 dark:text-text">
           {data.intro}
         </p>
       </motion.div>
@@ -73,7 +73,10 @@ export const Research: React.FC = () => {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="mb-16"
       >
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Research Directions</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-text mb-8 border-b border-gray-200 dark:border-border pb-4 flex items-center gap-3">
+          <Target className="w-7 h-7 text-primary dark:text-primary-dark" />
+          Research Directions
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.directions.map((direction, idx) => (
             <motion.div
@@ -81,19 +84,19 @@ export const Research: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + idx * 0.1 }}
-              className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-8 hover:border-primary/30 transition-colors group"
+              className="bg-gray-50 dark:bg-surface border border-gray-100 dark:border-border p-8 hover:border-primary/30 dark:hover:border-primary-dark/30 transition-colors group"
             >
-              <div className="w-12 h-12 bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 bg-white dark:bg-surface-1 border border-gray-200 dark:border-surface flex items-center justify-center mb-6 text-primary dark:text-primary-dark group-hover:scale-110 transition-transform">
                 {getIcon(direction.icon)}
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{direction.title}</h3>
-              <p className="text-lg text-primary font-medium mb-4 italic">{direction.question}</p>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed mb-6">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-text mb-2">{direction.title}</h3>
+              <p className="text-lg text-primary dark:text-primary-dark font-medium mb-4 italic">{direction.question}</p>
+              <p className="text-slate-600 dark:text-subtext leading-relaxed mb-6">
                 {direction.description}
               </p>
               <div className="space-y-2">
-                <p className="text-sm font-bold text-slate-700 dark:text-slate-300">Key areas:</p>
-                <ul className="list-disc list-inside text-slate-600 dark:text-gray-400 font-semibold">
+                <p className="text-sm font-bold text-slate-700 dark:text-subtext">Key areas:</p>
+                <ul className="list-disc list-inside text-slate-600 dark:text-subtext font-semibold">
                   {direction.keyAreas.map(area => (
                     <li key={area}>{area}</li>
                   ))}

@@ -59,8 +59,8 @@ export const Resources: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="mb-16 text-center max-w-3xl mx-auto"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Resources & Software</h1>
-        <p className="text-xl text-slate-600 dark:text-gray-300">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">Resources & Software</h1>
+        <p className="text-xl text-slate-600 dark:text-text">
           {data.intro}
         </p>
       </motion.div>
@@ -72,23 +72,23 @@ export const Resources: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
-            className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-8 hover:border-primary/30 transition-colors group"
+            className="bg-gray-50 dark:bg-surface border border-gray-100 dark:border-border p-8 hover:border-primary/30 dark:hover:border-primary-dark/30 transition-colors group"
           >
-            <div className="w-12 h-12 bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 bg-white dark:bg-surface-1 border border-gray-200 dark:border-surface flex items-center justify-center mb-6 text-primary dark:text-primary-dark group-hover:scale-110 transition-transform">
               {getIcon(tool.icon)}
             </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{tool.name}</h3>
-            <p className="text-slate-600 dark:text-gray-400 leading-relaxed mb-6">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-text mb-3">{tool.name}</h3>
+            <p className="text-slate-600 dark:text-subtext leading-relaxed mb-6">
               {tool.description}
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
               {tool.tags.map(tag => (
-                <span key={tag} className="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-xs font-mono text-slate-600 dark:text-slate-300">
+                <span key={tag} className="px-2 py-1 bg-gray-200 dark:bg-surface text-xs font-mono text-slate-600 dark:text-subtext">
                   {tag}
                 </span>
               ))}
             </div>
-            <a href={tool.link} className="inline-flex items-center text-sm font-bold text-primary uppercase tracking-wider hover:underline">
+            <a href={tool.link} className="inline-flex items-center text-sm font-bold text-primary dark:text-primary-dark uppercase tracking-wider hover:underline">
               View Repository &rarr;
             </a>
           </motion.div>

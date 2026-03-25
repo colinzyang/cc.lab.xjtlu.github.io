@@ -37,17 +37,17 @@ export const RecentPosts: React.FC = () => {
 
   return (
     <motion.div
-      className="w-full mt-24 border-t border-gray-200 dark:border-gray-800 pt-8"
+      className="w-full mt-24 border-t border-gray-200 dark:border-border pt-8"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="flex justify-between items-baseline mb-8">
-        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-subtext">
           Latest Updates
         </h3>
-        <Link to="/news" className="text-xs font-bold uppercase tracking-widest text-primary hover:text-slate-900 dark:hover:text-white transition-colors">
+        <Link to="/news" className="text-xs font-bold uppercase tracking-widest text-primary dark:text-primary-dark hover:text-slate-900 dark:hover:text-text transition-colors">
           View Archive
         </Link>
       </div>
@@ -60,16 +60,16 @@ export const RecentPosts: React.FC = () => {
           >
             <Link to="/news" className="group block">
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-1 bg-gray-100 dark:bg-gray-800 text-slate-600 dark:text-slate-300 rounded-sm">
+                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-1 bg-gray-100 dark:bg-surface text-slate-600 dark:text-subtext rounded-sm">
                   {post.category}
                 </span>
                 <span className="text-[10px] font-mono text-gray-400">
                   {post.date}
                 </span>
               </div>
-              <h4 className="text-lg font-medium text-slate-900 dark:text-white leading-snug group-hover:text-primary transition-colors pr-6 relative">
+              <h4 className="text-lg font-medium text-slate-900 dark:text-text leading-snug group-hover:text-primary dark:group-hover:text-primary-dark transition-colors pr-6 relative">
                 {post.title}
-                <ArrowUpRight className="absolute top-0.5 right-0 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                <ArrowUpRight className="absolute top-0.5 right-0 w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary dark:text-primary-dark" />
               </h4>
             </Link>
           </motion.div>

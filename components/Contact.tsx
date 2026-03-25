@@ -28,8 +28,8 @@ export const Contact: React.FC = () => {
   if (loading || !contact || !labInfo) {
     return (
       <div className="w-full max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Get in Touch</h1>
-        <p className="text-slate-600 dark:text-gray-300">Loading...</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">Get in Touch</h1>
+        <p className="text-slate-600 dark:text-text">Loading...</p>
       </div>
     );
   }
@@ -42,18 +42,18 @@ export const Contact: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-8">Get in Touch</h1>
-        <p className="text-xl text-slate-600 dark:text-gray-300 mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-8">Get in Touch</h1>
+        <p className="text-xl text-slate-600 dark:text-text mb-12">
           Interested in our research or collaborations?<br />
           We'd love to hear from you!
         </p>
 
         <div className="space-y-8">
           <div className="flex items-start gap-4">
-            <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <MapPin className="w-6 h-6 text-primary dark:text-primary-dark flex-shrink-0 mt-1" />
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Visit Us</h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-text mb-2">Visit Us</h3>
+              <p className="text-slate-600 dark:text-subtext leading-relaxed">
                 {contact.office}<br />
                 {labInfo.fullName}<br />
                 {labInfo.affiliation}
@@ -62,10 +62,10 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <GraduationCap className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <GraduationCap className="w-6 h-6 text-primary dark:text-primary-dark flex-shrink-0 mt-1" />
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Join</h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-text mb-2">Join</h3>
+              <p className="text-slate-600 dark:text-subtext leading-relaxed">
                 We're always looking for talented and motivated individuals to join our team.
                 Opportunities for graduate students, postdocs, and undergraduate researchers.
               </p>
@@ -73,10 +73,10 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <Users className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <Users className="w-6 h-6 text-primary dark:text-primary-dark flex-shrink-0 mt-1" />
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Collaborations</h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-text mb-2">Collaborations</h3>
+              <p className="text-slate-600 dark:text-subtext leading-relaxed">
                 We actively seek collaborations with experimental labs, clinicians, and industry partners.
               </p>
             </div>
@@ -84,11 +84,11 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="flex items-start gap-4">
-            <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <Mail className="w-6 h-6 text-primary dark:text-primary-dark flex-shrink-0 mt-1" />
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Email</h3>
-              <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
-                <a href={`mailto:${contact.email}`} className="hover:text-primary transition-colors">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-text mb-2">Email</h3>
+              <p className="text-slate-600 dark:text-subtext leading-relaxed">
+                <a href={`mailto:${contact.email}`} className="hover:text-primary dark:hover:text-primary-dark transition-colors">
                   {contact.email}
                 </a>
               </p>
@@ -107,22 +107,22 @@ export const Contact: React.FC = () => {
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="bg-gray-50 dark:bg-gray-900 p-8 border border-gray-100 dark:border-gray-800"
+        className="bg-gray-50 dark:bg-surface p-8 border border-gray-100 dark:border-border"
       >
         <form className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wide mb-2">Name</label>
-            <input type="text" id="name" className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="Your Name" />
+            <label htmlFor="name" className="block text-sm font-bold text-slate-700 dark:text-text uppercase tracking-wide mb-2">Name</label>
+            <input type="text" id="name" className="w-full bg-white dark:bg-surface-1 border border-gray-300 dark:border-surface p-3 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-colors text-slate-900 dark:text-text" placeholder="Your Name" />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wide mb-2">Email</label>
-            <input type="email" id="email" className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="your.email@example.com" />
+            <label htmlFor="email" className="block text-sm font-bold text-slate-700 dark:text-text uppercase tracking-wide mb-2">Email</label>
+            <input type="email" id="email" className="w-full bg-white dark:bg-surface-1 border border-gray-300 dark:border-surface p-3 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-colors text-slate-900 dark:text-text" placeholder="your.email@example.com" />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-bold text-slate-700 dark:text-gray-300 uppercase tracking-wide mb-2">Message</label>
-            <textarea id="message" rows={5} className="w-full bg-white dark:bg-background-dark border border-gray-300 dark:border-gray-700 p-3 focus:outline-none focus:border-primary transition-colors" placeholder="How can we help?"></textarea>
+            <label htmlFor="message" className="block text-sm font-bold text-slate-700 dark:text-text uppercase tracking-wide mb-2">Message</label>
+            <textarea id="message" rows={5} className="w-full bg-white dark:bg-surface-1 border border-gray-300 dark:border-surface p-3 focus:outline-none focus:border-primary dark:focus:border-primary-dark transition-colors text-slate-900 dark:text-text" placeholder="How can we help?"></textarea>
           </div>
-          <button type="button" className="w-full bg-primary text-white font-bold uppercase tracking-widest py-4 hover:bg-[#003366] transition-colors">
+          <button type="button" className="w-full bg-primary dark:bg-primary-dark text-white font-bold uppercase tracking-widest py-4 hover:bg-[#003366] dark:hover:bg-[#5a9fd4] transition-colors">
             Send Message
           </button>
         </form>

@@ -107,6 +107,11 @@ collections:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Category", name: "category", widget: "string"}
               - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: false
+                field: {label: "Image", name: "src", widget: "image"}
 
   # 实验室信息集合
   - name: "labInfo"

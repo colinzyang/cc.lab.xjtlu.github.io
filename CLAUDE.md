@@ -30,12 +30,17 @@ Routes: `/` (Home), `/member`, `/research`, `/publication`, `/resources`, `/news
 
 `App.tsx` wraps pages with: Navbar → Main content → Footer. `ScrollToTop` resets scroll on route change.
 
+### Component Structure
+
+Page components are in `src/components/`: `Home.tsx`, `Member.tsx`, `Research.tsx`, `Publication.tsx`, `Resources.tsx`, `News.tsx`, `Contact.tsx`. Shared components: `Navbar.tsx`, `Footer.tsx`, `Hero.tsx`, `Breadcrumb.tsx`, `Team.tsx`, `RecentPosts.tsx`.
+
 ### Styling
 
 **Tailwind CSS v4** via PostCSS (`postcss.config.js`). Theme in `src/index.css`:
 ```css
 @theme {
   --color-primary: #004a99;
+  --color-primary-dark: #89b4fa;
   --color-background-light: #ffffff;
   --color-background-dark: #0f1923;
   --font-family-sans: Inter, sans-serif;
@@ -84,6 +89,8 @@ const getIcon = (name: IconName) => {
   return <Icon className="w-6 h-6" />;
 };
 ```
+
+Icon maps are defined in individual components that use them (e.g., `Research.tsx`, `Resources.tsx`).
 
 ### Context
 

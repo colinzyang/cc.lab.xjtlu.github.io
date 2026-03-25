@@ -2,14 +2,14 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full border-t border-gray-100 dark:border-gray-800 mt-auto bg-white dark:bg-background-dark">
+    <footer className="w-full border-t border-gray-100 dark:border-border mt-auto bg-white dark:bg-background-dark">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
 
         <div className="flex flex-col gap-2">
-          <p className="text-sm font-medium text-slate-900 dark:text-gray-300">
+          <p className="text-sm font-medium text-slate-900 dark:text-text">
             © 2026 @ XJTLU Kevin. Chun Chan Lab
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-gray-500 dark:text-subtext">
             Department of bioscience and bioinformatics
           </p>
         </div>
@@ -40,6 +40,21 @@ export const Footer: React.FC = () => {
             />
           </a>
         </div>
+      </div>
+
+      <div className="text-center pb-4 -mt-14">
+        <p className="text-xs text-gray-400 dark:text-gray-500">
+          This project is released under the{' '}
+          <a
+            href="https://opensource.org/licenses/MIT"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+          >
+            MIT License
+          </a>
+          .
+        </p>
       </div>
     </footer>
   );

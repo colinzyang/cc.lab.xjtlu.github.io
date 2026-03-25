@@ -10,7 +10,7 @@ export const Breadcrumb: React.FC = () => {
     <nav className="flex items-center gap-2 text-sm" aria-label="Breadcrumb">
       <Link
         to="/"
-        className="flex items-center gap-1 text-slate-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
+        className="flex items-center gap-1 text-slate-500 hover:text-primary dark:text-subtext dark:hover:text-primary-dark transition-colors"
       >
         <Home className="w-4 h-4" />
         <span>Home</span>
@@ -18,16 +18,16 @@ export const Breadcrumb: React.FC = () => {
 
       {items.map((item, index) => (
         <React.Fragment key={index}>
-          <ChevronRight className="w-4 h-4 text-slate-400 dark:text-gray-600" />
+          <ChevronRight className="w-4 h-4 text-slate-400 dark:text-surface" />
           {item.path ? (
             <Link
               to={item.path}
-              className="text-slate-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
+              className="text-slate-500 hover:text-primary dark:text-subtext dark:hover:text-primary-dark transition-colors"
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-slate-900 dark:text-white font-medium">
+            <span className="text-slate-900 dark:text-text font-medium">
               {item.label}
             </span>
           )}

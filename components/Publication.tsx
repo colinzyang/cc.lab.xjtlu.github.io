@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Link as LinkIcon } from 'lucide-react';
+import { ScrollToTopButton } from './ScrollToTopButton';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadPublications } from '../src/lib/dataLoader';
 
@@ -31,8 +32,8 @@ export const Publication: React.FC = () => {
   if (loading) {
     return (
       <div className="w-full max-w-5xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Publications</h1>
-        <p className="text-slate-600 dark:text-gray-300">Loading...</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">Publications</h1>
+        <p className="text-slate-600 dark:text-text">Loading...</p>
       </div>
     );
   }
@@ -43,10 +44,10 @@ export const Publication: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mb-16 border-b border-gray-100 dark:border-gray-800 pb-10"
+        className="mb-16 border-b border-gray-100 dark:border-border pb-10"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Publications</h1>
-        <p className="text-xl text-slate-600 dark:text-gray-300 max-w-2xl">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">Publications</h1>
+        <p className="text-xl text-slate-600 dark:text-text max-w-2xl">
           Selected lab publications, with links to papers and preprints.
         </p>
       </motion.div>
@@ -62,26 +63,26 @@ export const Publication: React.FC = () => {
             className="flex flex-col md:flex-row gap-8 md:gap-16"
           >
             <div className="md:w-32 flex-shrink-0">
-              <span className="text-3xl font-black text-slate-200 dark:text-slate-800 sticky top-24">
+              <span className="text-3xl font-black text-slate-200 dark:text-surface-1 sticky top-24">
                 {group.year}
               </span>
             </div>
             <div className="flex-grow space-y-10">
               {group.papers.map((paper) => (
                 <div key={paper.id} className="group">
-                  <h3 className="text-xl font-medium text-slate-900 dark:text-white leading-tight mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-medium text-slate-900 dark:text-text leading-tight mb-2 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
                     <a href={paper.link} target="_blank" rel="noopener noreferrer">{paper.title}</a>
                   </h3>
-                  <p className="text-slate-600 dark:text-gray-400 mb-1">{paper.authors}</p>
+                  <p className="text-slate-600 dark:text-subtext mb-1">{paper.authors}</p>
                   <div className="flex items-center gap-4 text-sm flex-wrap">
                     <span className="font-serif italic text-slate-500">{paper.journal}</span>
                     {paper.doi && (
-                      <a href={paper.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-wider hover:underline">
+                      <a href={paper.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary dark:text-primary-dark text-xs font-bold uppercase tracking-wider hover:underline">
                         <LinkIcon className="w-3 h-3" /> DOI
                       </a>
                     )}
                     {paper.preprint_url && (
-                      <a href={paper.preprint_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-wider hover:underline">
+                      <a href={paper.preprint_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary dark:text-primary-dark text-xs font-bold uppercase tracking-wider hover:underline">
                         <FileText className="w-3 h-3" /> {paper.preprint_label}
                       </a>
                     )}
@@ -92,6 +93,7 @@ export const Publication: React.FC = () => {
           </motion.div>
         ))}
       </div>
+      <ScrollToTopButton />
     </div>
   );
 };

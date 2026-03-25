@@ -8,7 +8,7 @@ import { Home } from './components/Home';
 import { Member } from './components/Member';
 import { Research } from './components/Research';
 import { Publication } from './components/Publication';
-import { Resources } from './components/Resources';
+// import { Resources } from './components/Resources'; // TODO: 暂时隐藏，待内容完善后恢复
 import { News } from './components/News';
 import { Contact } from './components/Contact';
 import { preloadAllData } from './src/lib/dataLoader';
@@ -42,7 +42,7 @@ const MainContent = () => {
         <Route path="/member" element={<Member />} />
         <Route path="/research" element={<Research />} />
         <Route path="/publication" element={<Publication />} />
-        <Route path="/resources" element={<Resources />} />
+        {/* <Route path="/resources" element={<Resources />} /> */}
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
         {/* Catch-all route redirects to home */}
