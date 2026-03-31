@@ -16,15 +16,15 @@
           "doi": "10.1038/s41598-025-34618-8"
         },
         {
-          "id": 33,
-          "title": "Decoding TCR recognition via geometric deep learning of immunological fingerprints",
-          "journal": "Briefings in Bioinformatics",
-          "date": "2026",
-          "year": 2026,
           "authors": "Chun Shang, Kevin C Chan, Ruhong Zhou",
+          "date": "Mar 2026",
+          "bibtexKey": "shang2026decoding",
+          "journal": "Briefings in Bioinformatics",
+          "title": "Decoding TCR recognition via geometric deep learning of immunological fingerprints",
           "link": "",
+          "id": 33,
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "shang2026decoding"
+          "year": 2026
         }
       ]
     },
