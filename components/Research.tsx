@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Brain, Dna, Pill, Lightbulb, Github, Database, Terminal, LucideIcon, Target } from 'lucide-react';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadResearch, ResearchData, IconName } from '../src/lib/dataLoader';
+import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 
 const iconMap: Record<IconName, LucideIcon> = {
   Brain,
@@ -21,6 +22,7 @@ const getIcon = (name: IconName) => {
 
 export const Research: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  useDocumentTitle('Research');
   const [data, setData] = React.useState<ResearchData | null>(null);
   const [loading, setLoading] = React.useState(true);
 

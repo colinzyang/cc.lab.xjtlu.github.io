@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadNews, NewsItem } from '../src/lib/dataLoader';
+import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 import { ChevronDown, ImageOff } from 'lucide-react';
 import { ScrollToTopButton } from './ScrollToTopButton';
 
@@ -31,6 +32,7 @@ const NewsImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
 
 export const News: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  useDocumentTitle('News & Events');
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);

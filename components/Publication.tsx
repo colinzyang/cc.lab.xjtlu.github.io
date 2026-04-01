@@ -4,6 +4,7 @@ import { FileText, Link as LinkIcon } from 'lucide-react';
 import { ScrollToTopButton } from './ScrollToTopButton';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadPublications } from '../src/lib/dataLoader';
+import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 
 interface PublicationGroup {
   year: number;
@@ -12,6 +13,7 @@ interface PublicationGroup {
 
 export const Publication: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  useDocumentTitle('Publications');
   const [publicationsByYear, setPublicationsByYear] = useState<PublicationGroup[]>([]);
   const [loading, setLoading] = useState(true);
 

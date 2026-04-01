@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Github, GraduationCap, Shuffle, RotateCcw } from 'lucide-react';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadMembers, Member as MemberType } from '../src/lib/dataLoader';
+import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 
 // April Fools' Day check
 const isAprilFools = (): boolean => {
@@ -54,6 +55,7 @@ function groupMembers(members: MemberType[]): { label: string; members: MemberTy
 
 export const Member: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  useDocumentTitle('People');
   const [pi, setPi] = useState<MemberType | null>(null);
   const [members, setMembers] = useState<MemberType[]>([]);
   const [alumni, setAlumni] = useState<MemberType[]>([]);

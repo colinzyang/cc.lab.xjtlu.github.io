@@ -2,9 +2,11 @@ import React from 'react';
 import { Hero } from './Hero';
 import { RecentPosts } from './RecentPosts';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
+import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 
 export const Home: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  useDocumentTitle();
 
   React.useEffect(() => {
     // 首页不显示面包屑

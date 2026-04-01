@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { MapPin, Mail, Users, GraduationCap } from 'lucide-react';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadLabInfo, ContactInfo, LabInfo } from '../src/lib/dataLoader';
+import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 
 export const Contact: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
+  useDocumentTitle('Contact');
   const [contact, setContact] = useState<ContactInfo | null>(null);
   const [labInfo, setLabInfo] = useState<LabInfo | null>(null);
   const [loading, setLoading] = useState(true);
