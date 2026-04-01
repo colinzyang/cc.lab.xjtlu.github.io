@@ -22,17 +22,17 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 };
 
 const ROLE_ORDER: Record<string, number> = {
-  'PhD Student': 0,
-  'MSc Student': 1,
-  'Undergraduate Researcher': 2,
-  'Lab Manager': 3,
+  'Staff': 0,
+  'PhD Student': 1,
+  'MSc Student': 2,
+  'Undergraduate Researcher': 3,
 };
 
 const GROUP_LABELS: Record<string, string> = {
   'PhD Student': 'PhD Students',
   'MSc Student': 'MSc Students',
   'Undergraduate Researcher': 'Undergraduate Researchers',
-  'Lab Manager': 'Staff',
+  'Staff': 'Staff',
 };
 
 function groupMembers(members: MemberType[]): { label: string; members: MemberType[] }[] {
@@ -43,7 +43,7 @@ function groupMembers(members: MemberType[]): { label: string; members: MemberTy
     return a.name.localeCompare(b.name);
   });
   for (const member of sorted) {
-    const key = member.role in ROLE_ORDER ? member.role : 'Lab Manager';
+    const key = member.role in ROLE_ORDER ? member.role : 'Staff';
     if (!groups[key]) groups[key] = [];
     groups[key].push(member);
   }
@@ -66,8 +66,13 @@ export const Member: React.FC = () => {
   const [isShuffled, setIsShuffled] = useState(false);
   const showAprilFools = isAprilFools();
 
-  // All people for shuffling
-  const allPeople = pi ? [pi, ...members] : members;
+  // All people for shuffling — sorted to match groupMembers() order
+  const sortedMembers = [...members].sort((a, b) => {
+    const orderDiff = (ROLE_ORDER[a.role] ?? 99) - (ROLE_ORDER[b.role] ?? 99);
+    if (orderDiff !== 0) return orderDiff;
+    return a.name.localeCompare(b.name);
+  });
+  const allPeople = pi ? [pi, ...sortedMembers] : sortedMembers;
 
   const handleShuffle = () => {
     // Shuffle everyone and create position mapping

@@ -217,12 +217,22 @@
     {
       "id": "qiujie_zhu",
       "name": "Qiujie Zhu",
-      "role": "Lab Manager",
+      "role": "Staff",
       "title": "Lab Manager / Technician",
       "image": "/assets/images/people/Qiujie_Zhu.jpg",
       "bio_long": "Qiujie joined the lab with an M.S. in Bioinformatics. She manages the lab's day-to-day operations and computational infrastructure.",
       "interest": "Lab Operations, Computational Infrastructure",
       "email": "Qiujie.Zhu@xjtlu.edu.cn",
+      "type": "member"
+    },
+    {
+      "id": "zhicheng_yang",
+      "name": "Zhicheng Yang",
+      "role": "Staff",
+      "title": "Web Developer",
+      "image": "/assets/images/people/zhicheng_yang_placeholder.svg",
+      "bio_long": "",
+      "interest": "",
       "type": "member"
     }
   ],
